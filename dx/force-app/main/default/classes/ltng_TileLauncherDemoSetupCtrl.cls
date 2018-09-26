@@ -28,7 +28,7 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
     global static final String PERMISSION_SET_NAME = 'TileLauncherDemoParticipant';
     
     
-    //-- @CHANGE: replace YOUR_SOBJECT_API_NAME with the SObject Durable Name
+    //-- @CHANGE: replace ltng_TileLauncherEntry__c with the SObject Durable Name
     //-- 	of the objects you will create - (if objects are created)
     //--    ex: MyCustomObject__c
     //--    (e.g.:  SELECT DeveloperName, DurableId FROM EntityDefinition WHERE DeveloperName = 'Object API Name')
@@ -37,7 +37,7 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
      * API Name of the Object to create.
      *	(Although not required, it is fairly common to create objects in setup)
      **/
-    global static final String CHILD_SOBJECT_NAME  = 'YOUR_SOBJECT_API_NAME';
+    global static final String CHILD_SOBJECT_NAME  = 'ltng_TileLauncherEntry__c';
     
     //-- @CHANGE: replace YOUR_RECORD_TYPE_NAME with the RecordType Developer Name
     //--	of the objects you will create - (if objects / record types are used)
@@ -93,15 +93,11 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             return step;
         }
         
-        //-- @CHANGE: implement how to delete all records
-        //-- 	(the following is an example set of code)
-        
-        /*
         SObject[] recordsToDelete = null;
         try {
             recordsToDelete = [
                 SELECT Id
-                FROM YOUR_SOBJECT_API_NAME
+                FROM ltng_TileLauncherEntry__c
             ];
             
             delete recordsToDelete;
@@ -111,7 +107,6 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             //-- do nothing for now.
             System.debug(step.errMsg);
         }
-        */
         
         step.markCompleted();
         return(step);
@@ -156,15 +151,15 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
         It is recommended that you store all queries used for extracting data
         and store them separately from your data (in case you need it again)
         
-        data/queries/YOUR_SOBJECT_API_NAME.txt
-        SELECT Example_Value__c FROM YOUR_SOBJECT_API_NAME
+        data/queries/ltng_TileLauncherEntry__c.txt
+        SELECT Example_Value__c FROM ltng_TileLauncherEntry__c
         
         Say that the query you ran gave you this:
-        sfdx force:data:tree:export -q queries/YOUR_SOBJECT_API_NAME.txt -d tree/
+        sfdx force:data:tree:export -q queries/ltng_TileLauncherEntry__c.txt -d tree/
         
         { "records": [	{
 							"attributes": {
-								"type": "YOUR_SOBJECT_API_NAME"
+								"type": "ltng_TileLauncherEntry__c"
 							},
 							"Example_Value__c": 1000
 		}	]	}
@@ -173,15 +168,15 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
 		{ "Example_Value__c": 1000 }
 		
 		You can then convert it to an SObject like so:
-		YOUR_SOBJECT_API_NAME[] baseRecords = new YOUR_SOBJECT_API_NAME[]{};
+		ltng_TileLauncherEntry__c[] baseRecords = new ltng_TileLauncherEntry__c[]{};
 		
-		baseRecords.add( new YOUR_SOBJECT_API_NAME(
+		baseRecords.add( new ltng_TileLauncherEntry__c(
 			Example_Value__c = 1000
 		));
 		
 		or
 		
-		baseRecords.add( new YOUR_SOBJECT_API_NAME(
+		baseRecords.add( new ltng_TileLauncherEntry__c(
 			Example_Value__c = 1000,
 			RecordTypeId = recordTypeMap.get(RT_NAME)
 		));
@@ -190,41 +185,57 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
 		//-- @CHANGE: implement the records to be created
 		//--	(the following is an example set of code)
 		
-		/*
-        YOUR_SOBJECT_API_NAME[] baseRecords = new YOUR_SOBJECT_API_NAME[]{};
-        YOUR_SOBJECT_API_NAME baseRecord;
+		ltng_TileLauncherEntry__c[] baseRecords = new ltng_TileLauncherEntry__c[]{};
+        ltng_TileLauncherEntry__c baseRecord;
         
-		baseRecord = new YOUR_SOBJECT_API_NAME(
-			Example_Value__c = 1000
+		baseRecord = new ltng_TileLauncherEntry__c(
+            Description__c = 'Salesforce Accounts',
+            ExternalId__c = 'obj_accounts',
+            IconGroup__c = 'standard',
+            IconName__c = 'account',
+            Name = 'Accounts',
+            Target__c = '/lightning/o/Account/list',
+            Type__c = 'URL'
 		);
 		
-		OR
-		
-		baseRecord = new YOUR_SOBJECT_API_NAME(
-			Example_Value__c = 1000,
-			recordTypeId = recordTypeMap.get(RT_NAME) or other RecordTypeNames...
+		baseRecord = new ltng_TileLauncherEntry__c(
+            Description__c = 'Salesforce Opportunities',
+            ExternalId__c = 'obj_opportunities',
+            IconGroup__c = 'standard',
+            IconName__c = 'opportunity',
+            Name = 'Opportunities',
+            Target__c = '/lightning/o/Opportunity/list',
+            Type__c = 'URL'
 		);
-        
-        baseRecords.add(baseRecord);
-        
-        OR
-        
-        baseRecords.add(new YOUR_SOBJECT_API_NAME(...));
-        ...
-        
-        //-- finally add in the records
+		
+		baseRecord = new ltng_TileLauncherEntry__c(
+            Description__c = 'Surgery Management System - your gateway to ...',
+            ExternalId__c = 'sys_sms',
+            IconGroup__c = 'standard',
+            IconName__c = 'omni_supervisor',
+            Name = 'SMS',
+            Target__c = 'https://www.google.com',
+            Type__c = 'URL'
+		);
+		
+		baseRecord = new ltng_TileLauncherEntry__c(
+            Description__c = 'Link only available to Admins',
+            ExternalId__c = 'admin_link',
+            IconGroup__c = 'standard',
+            IconName__c = 'custom',
+            Name = 'Admin Only Link',
+            Target__c = '/lightning/o/ltng_TileLauncherEntry__c/list',
+            Permission__c = 'QuickLinksAdmin',
+            Type__c = 'URL'
+		);
         
         try {
             insert baseRecords;
-
-            //step.seeMore = baseRecords[0].Id;
         } catch( Exception err){
             step.errMsg = 'error occurred while creating base records';
             step.devErrMsg = err.getMessage();
             System.debug(step.errMsg);
         }
-        */
-        
 
         step.markCompleted();
         return(step);

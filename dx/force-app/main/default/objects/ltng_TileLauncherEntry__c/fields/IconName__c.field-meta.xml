@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IconName__c</fullName>
+    <description>List of all icons are available here:
+https://www.lightningdesignsystem.com/icons/#standard</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Standard Lightning Icon name (or blank if no icon should be used):
+
+https://www.lightningdesignsystem.com/icons</inlineHelpText>
+    <label>Icon Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
