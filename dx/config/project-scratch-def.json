@@ -1,0 +1,7 @@
+{
+    "orgName": "ltng-support-tile-launcher",
+    "edition": "Developer",
+    "orgPreferences" : {
+        "enabled": ["S1DesktopEnabled"]
+    }
+}
