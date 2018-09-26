@@ -6,9 +6,11 @@
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
-    <description>Example Lightning Support Demo App</description>
+    <description>Tile Launcher Demo App</description>
     <formFactors>Large</formFactors>
-    <label>Demo App</label>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Tile Launcher</label>
     <navType>Standard</navType>
     <tabs>ltng_TileLauncherDemoSetup</tabs>
     <uiType>Lightning</uiType>
