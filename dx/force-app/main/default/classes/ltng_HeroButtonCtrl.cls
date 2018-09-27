@@ -1,7 +1,7 @@
 /**
  * Controller for the Hero Button component.
  **/
-public class ltng_HerokuButtonCtrl {
+public class ltng_HeroButtonCtrl {
     
     /** default resource URL **/
 	public static final String DEFAULT_RESOURCE_URL = '/resource/ltng_TileLauncherHero';

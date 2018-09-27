@@ -5,7 +5,7 @@
 **/
 -->
 <aura:component
-    controller="ltng_HerokuButtonCtrl"
+    controller="ltng_HeroButtonCtrl"
     implements="force:appHostable,flexipage:availableForAllPageTypes"
     access="global"
 >
