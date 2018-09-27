@@ -1,8 +1,16 @@
 ({
 	/**
+	 * Initialize the components
+	 */
+	initialize : function(component){ // , helper
+		var resourceAddress = /resource/ + component.get('v.resourceName');
+		component.set('v.resourceAddress', resourceAddress);
+	},
+
+	/**
 	 * Handles the user clicking on the hero button.
 	 */
-	handleClick : function(component, helper) {
+	handleClick : function(component) { // , helper
 		var targetAddress = component.get('v.targetAddress');
 		//console.log('hero clicked');
 
@@ -58,7 +66,7 @@
 	 * @param errorTitle (String)
 	 * @param errorMsg (String)
 	 **/
-	displayError: function(errorCode, component, event, helper){
+	displayError: function(errorCode){ // , component, event, helper
 			var errorTitle = 'Error';
 			var errorMsg = 'An error occurred: ' + errorCode + '. Please contact your System Administrator';
 			

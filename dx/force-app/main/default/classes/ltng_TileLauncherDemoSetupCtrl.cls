@@ -225,7 +225,7 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             IconName__c = 'custom',
             Name = 'Admin Only Link',
             Target__c = '/lightning/o/ltng_TileLauncherEntry__c/list',
-            Permission__c = 'QuickLinksAdmin',
+            Permission__c = 'ltng_TileLauncherAdmin',
             Type__c = 'URL'
 		));
         
