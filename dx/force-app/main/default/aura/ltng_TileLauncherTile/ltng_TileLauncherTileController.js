@@ -3,11 +3,21 @@
 	handleLinkClicked: function( component, event, helper ){
 		event.preventDefault();
 
-		//console.log( 'link was clicked' );
-		var tile = component.get('v.tile');
-		var linkType = tile.Type__c;
-		var linkTarget = tile.Target__c;
-		helper.followTileLink( linkType, linkTarget, tile );
+		// console.log('link was clicked');
+		// helper.followTileLink( linkType, linkTarget, tile );
+
+		var currentTile = component.get("v.tile");
+		var targetURL = currentTile.Target__c;
+
+		//var currentTileObj = JSON.parse(JSON.stringify(currentTile));
+
+		var tileEvent = component.getEvent("tileEvent");
+		tileEvent.setParams({
+			targetTile: currentTile.Id,
+			messageType: 'click',
+			payload: targetURL
+		});
+		tileEvent.fire();
 	},
 	
 	init: function( component){ // , event, helper
