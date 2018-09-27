@@ -4,3 +4,4 @@ createTemplateProject.sh
 *.profile*
 **/.vscode
 **/Security.settings*
+/ltng-support-tile-launcher.code-workspace
