@@ -6,6 +6,7 @@
     <inlineHelpText>Whether the target is a Record Id, Visualforce page, URL, etc.</inlineHelpText>
     <label>Type</label>
     <required>true</required>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -13,19 +14,39 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Visualforce</fullName>
-                <default>false</default>
-                <label>Visualforce</label>
-            </value>
-            <value>
-                <fullName>Record</fullName>
-                <default>false</default>
-                <label>Record</label>
-            </value>
-            <value>
                 <fullName>URL</fullName>
                 <default>false</default>
                 <label>URL</label>
+            </value>
+            <value>
+                <fullName>Knowledge Article</fullName>
+                <default>false</default>
+                <label>Knowledge Article</label>
+            </value>
+            <value>
+                <fullName>Named Page</fullName>
+                <default>false</default>
+                <label>Named Page</label>
+            </value>
+            <value>
+                <fullName>Navigation Item Page</fullName>
+                <default>false</default>
+                <label>Navigation Item Page</label>
+            </value>
+            <value>
+                <fullName>Object Page</fullName>
+                <default>false</default>
+                <label>Object Page</label>
+            </value>
+            <value>
+                <fullName>Record Page</fullName>
+                <default>false</default>
+                <label>Record Page</label>
+            </value>
+            <value>
+                <fullName>Record Relationship Page</fullName>
+                <default>false</default>
+                <label>Record Relationship Page</label>
             </value>
         </valueSetDefinition>
     </valueSet>

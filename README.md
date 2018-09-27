@@ -7,6 +7,8 @@ This is meant to be a simple starting point for creating Lightning demo projects
 Sprintf templating
 https://gist.github.com/paulroth3d/95ce8c7d1c74377c39fb199a9a87dedc
 
+look into passing functions for parameters
+https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/ref_attr_types_function.htm
 
 # Structure of the project
 

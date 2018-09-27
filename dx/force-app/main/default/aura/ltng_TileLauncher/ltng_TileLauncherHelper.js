@@ -24,6 +24,8 @@
 					//return t1 ? 0: ( t2 ? -1 : 1);
 				});
 				component.set("v.tiles", tiles);
+
+				helper.loadLauncherFormats(component, helper);
 			} else {
 				// console.error('Error occurred from Action');
 				
@@ -31,6 +33,31 @@
 				var errors = response.getError();
 				helper.handleCallError(component, helper, state, errors);
 			}
+		});
+		//-- optionally set storable, abortable, background flags here
+		$A.enqueueAction(action);
+	},
+
+	/**
+	 * Loads the launcher formats
+	 */
+	loadLauncherFormats : function(component, helper){
+		var action = component.get('c.getLauncherFormats');
+		//action.setParams({ recordId: recordId });
+		
+		action.setCallback(this, function(response){
+				var state = response.getState();
+				if( state === 'SUCCESS' ){
+						console.info('action success');
+						var results = response.getReturnValue();
+						component.set('v.launcherFormats', results);
+				} else {
+						console.error('Error occurred from Action');
+						
+						//-- https://developer.salesforce.com/blogs/2017/09/error-handling-best-practices-lightning-apex.html
+						var errors = response.getError();
+						helper.handleCallError(component, helper, state, errors);
+				}
 		});
 		//-- optionally set storable, abortable, background flags here
 		$A.enqueueAction(action);
@@ -170,6 +197,20 @@
 		var linkType = tile.Type__c;
 		var targetURL = tile.Target__c;
 
+		console.log('clickEvent');
+		var navigationParameters = helper.getNavigationParameters(component, helper, linkType, targetURL);
+
+		var navEvt;
+		if (navigationParameters){
+			component.find("navService").navigate(navigationParameters);
+		} else {
+			console.log('assume URL');
+			navEvt = $A.get('e.force:navigateToURL' );
+			navEvt.setParams({ 'url': targetURL });
+			navEvt.fire();
+		}
+
+		/*
 		var navEvt;
 		if( linkType === 'Visualforce' ){
 				navEvt = $A.get('e.force:navigateToURL');
@@ -184,5 +225,51 @@
 				navEvt.setParams({ 'url': targetURL });
 				navEvt.fire();
 		}
+		*/
+	},
+
+	getNavigationParameters : function(component, helper, linkType, targetURL){
+		var result = null;
+		var launcherFormats = component.get('v.launcherFormats');
+		var launcherFormat;
+
+		var pattern;
+		var templateResult;
+		var matches;
+		var templateToken;
+		var token;
+
+		//-- if linkType === 'URL' - short circuit
+		if (linkType === 'URL') {
+			return null;
+		}
+
+		//-- evaluate ES6 support at ZB
+		for (var formatIndex = 0; formatIndex < launcherFormats.length; formatIndex = formatIndex+1) {
+			launcherFormat = launcherFormats[formatIndex];
+
+			try {
+				//-- @TODO: include catches in case the template is bad
+				result = launcherFormat.Navigation_Object_Format__c;
+				pattern = new RegExp(launcherFormat.URL_Format__c, "i");
+
+				matches = targetURL.match(pattern);
+
+				if (matches) {
+					for (var matchIndex = 1; matchIndex < matches.length; matchIndex = matchIndex + 1){
+						templateToken = new RegExp("\<\%=_" + matchIndex + "\%>", "ig");
+						token = matches[matchIndex];
+						result = result.replace(templateToken, token);
+					}
+					return JSON.parse(result);
+				} else {
+					console.log('no match. next!');
+				}
+			} catch(err){
+				helper.displayError('Error with format:' + launcherFormat.Id);
+			}
+		}
+		
+		return null;
 	}
 })

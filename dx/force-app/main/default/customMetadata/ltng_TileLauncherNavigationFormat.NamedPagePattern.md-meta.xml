@@ -16,10 +16,10 @@ https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/compo
     </values>
     <values>
         <field>Navigation_Object_Format__c</field>
-        <value xsi:type="xsd:string">{    
-    &#39;type&#39;: &#39;standard__namedPage&#39;,
-    &#39;attributes&#39;: {
-        &#39;pageName&#39;: &#39;&lt;%=_1%&gt;&#39;    
+        <value xsi:type="xsd:string">{
+    &quot;type&quot;: &quot;standard__namedPage&quot;,
+    &quot;attributes&quot;: {
+        &quot;pageName&quot;: &quot;&lt;%=_1%&gt;&quot;
     }
 }</value>
     </values>
@@ -29,7 +29,7 @@ https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/compo
     </values>
     <values>
         <field>Priority__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:double">100.0</value>
     </values>
     <values>
         <field>URL_Format__c</field>
