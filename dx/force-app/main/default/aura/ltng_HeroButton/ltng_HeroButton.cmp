@@ -5,23 +5,41 @@
 **/
 -->
 <aura:component
+    controller="ltng_HerokuButtonCtrl"
     implements="force:appHostable,flexipage:availableForAllPageTypes"
     access="global"
 >
     <!-- attributes -->
+    <aura:attribute name="resourceName" type="String" />
     <aura:attribute name="targetAddress" type="String" />
     <aura:attribute name="description" type="String" />
     <aura:attribute name="width" type="String" default="100%" />
     <aura:attribute name="height" type="String" default="auto" />
     <!-- data - @TODO: review lightning:RecordForm -->
     <!-- private attributes -->
+        <!-- not used currently as /resource/ + resourceName
+            will continue to work for foreseeable future.
+            Otherwise, can be set by calling locateResource
+        -->
+        <aura:attribute name="resourceAddress" type="String" access="private" />
     <!-- handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <!-- events -->
     <!-- elements -->
     <div id='hero-image' style='text-align: center;'>
-        <a href="{!v.targetAddress}">
-            <img class="hero-banner" src="{!$Resource.ltng_TileLauncherHero}" alt="{!v.description}"
+        <a onclick='{!c.handleClick}' >
+            <!--
+                NOTE: the shortcut /resource/resourceName is expected to remain for the foreseeable future.
+                In the case this ever is not the case, we also included the more 'robust' means
+                (as this uses /resource/SystemModstamp in milliseconds/resourceName)
+                but this requires a call to the server, and muddies the water a bit.
+
+                If this is ever needed, please replace
+                src="{! '/resource/' + v.resourceName }"
+                with
+                src="{!v.resourceAddress}"
+            -->
+            <img class="hero-banner" src="{! '/resource/' + v.resourceName }" alt="{!v.description}"
                 style="{! 'width:' + v.width + '; height:' + v.height}"
             />
         </a>
