@@ -41,10 +41,30 @@
                 </div>
             </div>
             </div>
-            <div class='slds-card__body slds-p-top_medium'>
+            <div class='slds-card__body slds-p-top_medium slds-m-around_medium'>
                 <ul class='slds-grid slds-grid--pull-padded slds-wrap'>
                 <aura:iteration items='{! v.tiles }' var='tile'>
+                    <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
+                        <a aria-describedby="drag-instructions" draggable="true" href="javascript:void(0);" class="slds-app-launcher__tile slds-text-link_reset slds-is-draggable">
+                            <div class="slds-app-launcher__tile-figure">
+                            <span class="slds-avatar slds-avatar_large">
+                                <abbr class="slds-avatar__initials slds-icon-custom-59" title="company name">MC</abbr>
+                            </span>
+                            <span class="slds-icon_container" title="Drag item to a new location">
+                                <lightning:icon iconName="utility:rows" alternativeText="drag me" size="xx-small" />
+                            </span>
+                            </div>
+                            <div class="slds-app-launcher__tile-body">
+                            <span class="slds-text-link">Marketing Cloud</span>
+                            <p>Salesforce Marketing Cloud lets businesses of any size...
+                                <span class="slds-text-link">More</span>
+                            </p>
+                            </div>
+                        </a>
+                    </li>
+                    <!--
                     <c:ltng_TileLauncherTile tile="{!tile}" />
+                    -->
                 </aura:iteration>
                 </ul>
             </div>
