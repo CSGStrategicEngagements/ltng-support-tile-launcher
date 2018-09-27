@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Format for a url to provide navigation for Tiles in the Tile Launcher</description>
+    <label>Tile Launcher Navigation Format</label>
+    <pluralLabel>Tile Launcher Navigation Formats</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

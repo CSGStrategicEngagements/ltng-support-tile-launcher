@@ -4,6 +4,8 @@ Wait, what is this?
 
 This is meant to be a simple starting point for creating Lightning demo projects
 
+Sprintf templating
+https://gist.github.com/paulroth3d/95ce8c7d1c74377c39fb199a9a87dedc
 
 
 # Structure of the project
