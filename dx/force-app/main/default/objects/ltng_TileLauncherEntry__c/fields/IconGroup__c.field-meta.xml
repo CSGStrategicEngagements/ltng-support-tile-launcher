@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IconGroup__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The Lightning Design System icon group.
+https://www.lightningdesignsystem.com/icons/
+Standard is used if not set.</inlineHelpText>
+    <label>Icon Group</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>standard</fullName>
+                <default>false</default>
+                <label>standard</label>
+            </value>
+            <value>
+                <fullName>custom</fullName>
+                <default>false</default>
+                <label>custom</label>
+            </value>
+            <value>
+                <fullName>action</fullName>
+                <default>false</default>
+                <label>action</label>
+            </value>
+            <value>
+                <fullName>doctype</fullName>
+                <default>false</default>
+                <label>doctype</label>
+            </value>
+            <value>
+                <fullName>utility</fullName>
+                <default>false</default>
+                <label>utility</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

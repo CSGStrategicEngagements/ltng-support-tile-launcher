@@ -1,0 +1,12 @@
+<!--
+/**
+ * represents a message to pass from the Tile to the TileLauncher.
+ * @event ltng_TileLauncherEvent
+ **/
+-->
+<aura:event type="COMPONENT" description="A message to pass from the Tile to the TileLauncher">
+    <aura:attribute name="sourceTile" type="String" />
+    <aura:attribute name="targetTile" type="String" />
+    <aura:attribute name="messageType" type="String" />
+    <aura:attribute name="payload" type="String" />
+</aura:event>

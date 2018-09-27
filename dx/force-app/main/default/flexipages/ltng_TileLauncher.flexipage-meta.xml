@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>User Friendly list of tiles that can launch different apps or navigate within Salesforce</description>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>description</name>
+                <value>Alt Text for screen readers - /lightning/page/home</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>auto</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>resourceName</name>
+                <value>ltng_TileLauncherHero2</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>targetAddress</name>
+                <value>https://www.google.com</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>width</name>
+                <value>100%</value>
+            </componentInstanceProperties>
+            <componentName>ltng_HeroButton</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>Example Rich Text Area &lt;a href=&quot;https://www.google.com&quot;&gt;with links!&lt;/a&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>ltng_TileLauncher</componentName>
+        </componentInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Tile Launcher</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

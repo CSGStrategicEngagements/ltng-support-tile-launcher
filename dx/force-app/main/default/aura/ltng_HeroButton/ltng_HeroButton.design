@@ -1,0 +1,7 @@
+<design:component label='Hero Button'>
+    <design:attribute name='resourceName' label='Resource Name' description='(Developer/API) Name of Static Resource to show' default='ltng_TileLauncherHero' />
+    <design:attribute name='targetAddress' label='Target Address' description='Where should users go when clicking the hero' default='' />
+    <design:attribute name='description' label='Description' description='Alt text shown for the image' default='' />
+    <design:attribute name='width' label='Width' description='Width of the hero (px or %)' default='100%' />
+    <design:attribute name='height' label='Height' description='Height of the hero image (px or % or auto)' default='auto' />
+</design:component>
