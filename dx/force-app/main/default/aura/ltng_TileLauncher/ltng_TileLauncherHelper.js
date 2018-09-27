@@ -48,11 +48,11 @@
 		action.setCallback(this, function(response){
 				var state = response.getState();
 				if( state === 'SUCCESS' ){
-						console.info('action success');
+						//console.info('action success');
 						var results = response.getReturnValue();
 						component.set('v.launcherFormats', results);
 				} else {
-						console.error('Error occurred from Action');
+						//console.error('Error occurred from Action');
 						
 						//-- https://developer.salesforce.com/blogs/2017/09/error-handling-best-practices-lightning-apex.html
 						var errors = response.getError();
@@ -191,20 +191,19 @@
 	 * @param targetURL (String)
 	 */
 	handleClickEvent : function( component, event, helper ) {
-
+		// console.log('clickEvent');
+		
 		var tileId = event.getParam('targetTile');
 		var tile = helper.findTileById(component, helper, tileId);
 		var linkType = tile.Type__c;
 		var targetURL = tile.Target__c;
 
-		console.log('clickEvent');
 		var navigationParameters = helper.getNavigationParameters(component, helper, linkType, targetURL);
 
 		var navEvt;
 		if (navigationParameters){
 			component.find("navService").navigate(navigationParameters);
 		} else {
-			console.log('assume URL');
 			navEvt = $A.get('e.force:navigateToURL' );
 			navEvt.setParams({ 'url': targetURL });
 			navEvt.fire();
@@ -234,7 +233,6 @@
 		var launcherFormat;
 
 		var pattern;
-		var templateResult;
 		var matches;
 		var templateToken;
 		var token;
@@ -263,7 +261,7 @@
 					}
 					return JSON.parse(result);
 				} else {
-					console.log('no match. next!');
+					//console.log('no match. next!');
 				}
 			} catch(err){
 				helper.displayError('Error with format:' + launcherFormat.Id);

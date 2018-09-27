@@ -1,7 +1,7 @@
 ({
 	/** initializes the component **/
 	init: function(component, event, helper) {
-		console.log( 'quickLinks was initialized - placebreakpoint to learn more.' );
+		//console.log( 'quickLinks was initialized - placebreakpoint to learn more.' );
 		helper.loadTiles( component, helper );
 	},
 
