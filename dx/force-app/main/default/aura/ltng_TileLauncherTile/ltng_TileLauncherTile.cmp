@@ -9,10 +9,13 @@
 >
     <!-- attributes -->
     <aura:attribute name="tile" type="ltng_TileLauncherEntry__c" />
+    <aura:attribute name="search" type="String" />
     <!-- private attributes -->
+    <aura:attribute name="matchesSearch" type="Boolean" default="true" />
     <!-- handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <aura:handler name="change" value="{!v.tile}" action="{!c.handleTileChanged}" />
+    <aura:handler name="change" value="{!v.search}" action="{!c.handleSearchChanged}" />
     <!-- events -->
     <aura:registerEvent name="tileEvent" type="c:ltng_TileLauncherEvent" />
     <!-- methods -->
@@ -21,6 +24,7 @@
         https://hackernoon.com/drag-drop-for-lightning-components-27230745a2eb
         href="javascript:void(0);"
     -->
+    <aura:if isTrue="{!v.matchesSearch}">
     <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
         <a aria-describedby="drag-instructions" draggable="true"
             ondrag="{!c.handleOnDrag}"
@@ -53,6 +57,7 @@
             </div>
         </a>
     </li>
+    </aura:if>
     <!--
     <li class='slds-size-\-1-of-2 slds-p-horizontal-\-large slds-p-vertical-\-xxx-small'>
         <div class='slds-tile'>

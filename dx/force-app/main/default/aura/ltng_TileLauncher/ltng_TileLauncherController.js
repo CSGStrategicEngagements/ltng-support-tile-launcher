@@ -12,8 +12,7 @@
 
 	handleTileEvent : function(component, event, helper){
 		event.preventDefault();
-
-		console.log('tileEvent captured');
+		//console.log('tileEvent captured');
 
 		var messageType = event.getParam('messageType');
 		if (messageType === 'swap') {
@@ -21,5 +20,11 @@
 		} else {
 			helper.displayError('swap', component, event, helper);
 		}
+	},
+
+	handleSearchChanged : function(component, event, helper){
+		//console.log('handleSearchChanged');
+		var currentSearch = event.getParam('value');
+		component.set("v.currentSearch", currentSearch);
 	}
 })

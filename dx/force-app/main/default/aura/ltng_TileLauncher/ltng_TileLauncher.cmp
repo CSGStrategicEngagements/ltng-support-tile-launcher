@@ -14,6 +14,7 @@
     <aura:attribute name="enableCaching" type="Boolean" default="false" access="global" />
     <!-- private attributes -->
     <aura:attribute name="maxTileSize" type="Integer" default="200" access="private" />
+    <aura:attribute name="currentSearch" type="String" default="" access="private" />
     <aura:attribute name="tiles" type="ltng_TileLauncherEntry__c[]" access="private" />
     <aura:attribute name="setupComplete" type="Boolean" default="false" access="private" />
     <!-- handlers -->
@@ -40,7 +41,10 @@
             <div class="slds-form-element">
                 <label for="app-launcher-search" class="slds-form-element__label slds-assistive-text">Find an app</label>
                 <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-                    <lightning:input type="search" label="search" name="search" placeholder="Find an app..." />
+                    <lightning:input aura:id="search" type="search" label="search" name="search"
+                        onchange="{!c.handleSearchChanged}"
+                        placeholder="Find an app..."
+                    />
                 </div>
             </div>
             </div>
@@ -49,7 +53,7 @@
                 <div class="slds-assistive-text" id="drag-instructions">Press space bar to move this app within the list.</div>
                 <ul class='slds-grid slds-grid--pull-padded slds-wrap'>
                 <aura:iteration items='{! v.tiles }' var='tile'>
-                    <c:ltng_TileLauncherTile tile="{!tile}" />
+                    <c:ltng_TileLauncherTile tile="{!tile}" search="{!v.currentSearch}" />
                 </aura:iteration>
                 </ul>
             </div>

@@ -12,6 +12,14 @@
 	
 	init: function( component, event, helper ){
 		//console.log( 'tileTile init' );
+		component.set("v.matchesSearch", true);
+	},
+
+	handleSearchChanged : function(component, event, helper){
+		//console.log("search changed");
+		var search = component.get('v.search');
+		var tile = component.get('v.tile');
+		component.set("v.matchesSearch", helper.doesSearchMatch(tile, search));
 	},
 	
 	/** handler if the tile has changed **/
