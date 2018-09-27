@@ -12,7 +12,7 @@
     <aura:attribute name="targetAddress" type="String" />
     <aura:attribute name="description" type="String" />
     <aura:attribute name="width" type="String" default="100%" />
-    <aura:attribute name="height" type="String" default="200px" />
+    <aura:attribute name="height" type="String" default="auto" />
     <!-- data - @TODO: review lightning:RecordForm -->
     <!-- private attributes -->
     <!-- handlers -->
@@ -21,7 +21,9 @@
     <!-- elements -->
     <div id='hero-image' style='text-align: center;'>
         <a href="{!v.targetAddress}">
-            <img src="{!$Resource.ltng_TileLauncherHero}" alt="{!v.description}" style="{! 'width:' + v.width + '; height:' + v.height}" />
+            <img class="hero-banner" src="{!$Resource.ltng_TileLauncherHero}" alt="{!v.description}"
+                style="{! 'width:' + v.width + '; height:' + v.height}"
+            />
         </a>
     </div>
 </aura:component>

@@ -1,6 +1,6 @@
 ({
 	init : function(component, event, helper) {
-		console.log('hero button initialized');
+		//console.log('hero button initialized');
 	},
 
 	handleClick : function(component, event, helper){
