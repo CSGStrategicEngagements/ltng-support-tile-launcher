@@ -1,0 +1,30 @@
+<!--
+/**
+* Tile used in the Tile Launcher
+* @component: ltng_TileLauncherTile
+**/
+-->
+<aura:component
+    access="global"
+>
+    <!-- attributes -->
+    <aura:attribute name="tile" type="ltng_TileLauncherEntry__c" />
+    <!-- private attributes -->
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler name="change" value="{!v.tile}" action="{!c.handleTileChanged}" />
+    <!-- events -->
+    <!-- elements -->
+    <li class='slds-size--1-of-2 slds-p-horizontal--large slds-p-vertical--xxx-small'>
+        <div class='slds-tile'>
+            <span class='slds-truncate' title='{# v.tile.Name }'>
+                <aura:if isTrue='{! v.tile.IconName__c }'>
+                <span class="slds-avatar slds-avatar--x-small">
+                    <lightning:icon iconName="{# '' + (v.tile.IconGroup__c?v.tile.IconGroup__c:'standard') + ':' + v.tile.IconName__c }" size="x-small" alternativeText="{# v.tile.IconName__c }" />
+                </span>
+                </aura:if>
+                <ui:outputURL class='slds-m-left--xx-small' click='{! c.handleLinkClicked }' label='{# v.tile.Name }' title='{# v.tile.Description__c }' />
+            </span>
+        </div>
+    </li>
+</aura:component>

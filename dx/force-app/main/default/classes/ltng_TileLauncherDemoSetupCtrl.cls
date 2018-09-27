@@ -25,7 +25,7 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
     //--	We should use Permission Sets for all Demos, instead of modifying Profiles.
     
     /** Developer Name for the Permission Set **/
-    global static final String PERMISSION_SET_NAME = 'TileLauncherDemoParticipant';
+    global static final String PERMISSION_SET_NAME = 'TileLauncherDemoAdmin';
     
     
     //-- @CHANGE: replace ltng_TileLauncherEntry__c with the SObject Durable Name
@@ -188,7 +188,7 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
 		ltng_TileLauncherEntry__c[] baseRecords = new ltng_TileLauncherEntry__c[]{};
         ltng_TileLauncherEntry__c baseRecord;
         
-		baseRecord = new ltng_TileLauncherEntry__c(
+		baseRecords.add(new ltng_TileLauncherEntry__c(
             Description__c = 'Salesforce Accounts',
             ExternalId__c = 'obj_accounts',
             IconGroup__c = 'standard',
@@ -196,9 +196,9 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Name = 'Accounts',
             Target__c = '/lightning/o/Account/list',
             Type__c = 'URL'
-		);
+		));
 		
-		baseRecord = new ltng_TileLauncherEntry__c(
+		baseRecords.add(new ltng_TileLauncherEntry__c(
             Description__c = 'Salesforce Opportunities',
             ExternalId__c = 'obj_opportunities',
             IconGroup__c = 'standard',
@@ -206,9 +206,9 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Name = 'Opportunities',
             Target__c = '/lightning/o/Opportunity/list',
             Type__c = 'URL'
-		);
+		));
 		
-		baseRecord = new ltng_TileLauncherEntry__c(
+		baseRecords.add(new ltng_TileLauncherEntry__c(
             Description__c = 'Surgery Management System - your gateway to ...',
             ExternalId__c = 'sys_sms',
             IconGroup__c = 'standard',
@@ -216,9 +216,9 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Name = 'SMS',
             Target__c = 'https://www.google.com',
             Type__c = 'URL'
-		);
+		));
 		
-		baseRecord = new ltng_TileLauncherEntry__c(
+		baseRecords.add(new ltng_TileLauncherEntry__c(
             Description__c = 'Link only available to Admins',
             ExternalId__c = 'admin_link',
             IconGroup__c = 'standard',
@@ -227,7 +227,7 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Target__c = '/lightning/o/ltng_TileLauncherEntry__c/list',
             Permission__c = 'QuickLinksAdmin',
             Type__c = 'URL'
-		);
+		));
         
         try {
             insert baseRecords;
