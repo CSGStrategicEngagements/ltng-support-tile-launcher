@@ -13,7 +13,6 @@
     <label>Tile Launcher</label>
     <navType>Standard</navType>
     <tabs>ltng_TileLauncherDemoSetup</tabs>
-    <tabs>ltng_TileLauncherEntry__c</tabs>
-    <tabs>Tile_Launcher</tabs>
+    <tabs>ltng_TileLauncher</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

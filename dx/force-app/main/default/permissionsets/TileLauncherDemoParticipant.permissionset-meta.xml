@@ -47,7 +47,7 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabSettings>
-        <tab>ltng_TileLauncherEntry__c</tab>
+        <tab>ltng_TileLauncher</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>

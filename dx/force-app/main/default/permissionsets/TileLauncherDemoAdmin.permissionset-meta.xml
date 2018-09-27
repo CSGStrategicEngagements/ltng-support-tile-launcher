@@ -51,6 +51,10 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabSettings>
+        <tab>ltng_TileLauncher</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>ltng_TileLauncherDemoSetup</tab>
         <visibility>Visible</visibility>
     </tabSettings>
