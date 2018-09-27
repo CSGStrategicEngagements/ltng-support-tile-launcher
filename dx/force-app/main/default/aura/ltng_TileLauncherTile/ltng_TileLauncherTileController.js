@@ -35,6 +35,7 @@
 	handleOnDragEnd : function(component, event, helper){
 		//event.preventDefault();
 		//console.log('dragEnd:' + component.getGlobalId());
+		component.set("v.isGrabbed", false);
 	},
 
 	handleOnDragEnter : function(component, event, helper){
@@ -62,6 +63,8 @@
 		//console.log('dragStart:' + component.getGlobalId());
 		var tile = component.get('v.tile');
 		event.dataTransfer.setData('text', JSON.stringify(tile));
+
+		component.set("v.isGrabbed", true);
 	},
 
 	handleOnDrop : function(component, event, helper){
