@@ -209,11 +209,11 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
 		));
 		
 		baseRecords.add(new ltng_TileLauncherEntry__c(
-            Description__c = 'Surgery Management System - your gateway to ...',
-            ExternalId__c = 'sys_sms',
+            Description__c = 'External System! Your gateway to payments and commisions.',
+            ExternalId__c = 'sys_externalSystem',
             IconGroup__c = 'standard',
             IconName__c = 'omni_supervisor',
-            Name = 'SMS',
+            Name = 'External System',
             Target__c = 'https://www.google.com',
             Type__c = 'URL'
 		));
