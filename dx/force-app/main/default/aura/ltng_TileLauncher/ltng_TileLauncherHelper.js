@@ -86,5 +86,41 @@
 				
 				//-- close the dialog
 				$A.get("e.force:closeQuickAction").fire();
+		},
+
+		/**
+		 * Handle a swap request
+		 */
+		handleSwapEvent : function(component, event, helper){
+			var params = JSON.parse(JSON.stringify(event.getParams()))
+			var tiles = component.get("v.tiles");
+			var tile;
+			var sourceTileId = event.getParam('sourceTile');
+			var sourceTileIndex;
+			var sourceTile;
+			var targetTileId = event.getParam('targetTile');
+			var targetTileIndex;
+			var targetTile;
+
+			if (sourceTileId === targetTileId) {
+				//-- ignore
+				return;
+			}
+
+			for (var i = 0; i < tiles.length; i++ ){
+				tile = tiles[i];
+				if (tile.Id === sourceTileId) {
+					sourceTileIndex = i;
+					sourceTile = tile;
+				} else if (tile.Id === targetTileId) {
+					targetTileIndex = i;
+					targetTile = tile;
+				}
+			}
+
+			tiles[sourceTileIndex] = targetTile;
+			tiles[targetTileIndex] = sourceTile;
+
+			component.set('v.tiles', tiles);
 		}
 })

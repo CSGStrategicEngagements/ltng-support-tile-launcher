@@ -4,12 +4,20 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
+                <name>description</name>
+                <value>Alt Text for screen readers - /lightning/page/home</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
                 <name>height</name>
                 <value>auto</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
+                <name>resourceName</name>
+                <value>ltng_TileLauncherHero</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
                 <name>targetAddress</name>
-                <value>/lightning/page/home</value>
+                <value>https://www.google.com</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>width</name>
@@ -27,6 +35,9 @@
                 <value>Example Rich Text Area &lt;a href=&quot;https://www.google.com&quot;&gt;with links!&lt;/a&gt;</value>
             </componentInstanceProperties>
             <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>ltng_TileLauncher</componentName>
         </componentInstances>
         <name>main</name>
         <type>Region</type>

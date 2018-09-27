@@ -8,5 +8,18 @@
 	/** handles if a link is clicked **/
 	handleLinkClicked: function( component, event, helper ){
 		//console.log( 'link was clicked' );
+	},
+
+	handleTileEvent : function(component, event, helper){
+		event.preventDefault();
+
+		console.log('tileEvent captured');
+
+		var messageType = event.getParam('messageType');
+		if (messageType === 'swap') {
+			helper.handleSwapEvent(component, event, helper);
+		} else {
+			helper.displayError('swap', component, event, helper);
+		}
 	}
 })

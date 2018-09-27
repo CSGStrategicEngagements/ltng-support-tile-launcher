@@ -1,11 +1,13 @@
 ({
 	/** handler for when the link is clicked **/
 	handleLinkClicked: function( component, event, helper ){
+		event.preventDefault();
+
 		//console.log( 'link was clicked' );
 		var tile = component.get('v.tile');
 		var linkType = tile.Type__c;
 		var linkTarget = tile.Target__c;
-		helper.followQuickLink( linkType, linkTarget, tile );
+		helper.followTileLink( linkType, linkTarget, tile );
 	},
 	
 	init: function( component, event, helper ){
@@ -13,8 +15,62 @@
 	},
 	
 	/** handler if the tile has changed **/
-	handleQuickLinkChanged: function( component, event, helper ){
+	handleTileChanged: function( component, event, helper ){
 		//console.log( 'tile changed' );
-		helper.initQuickLinks( component.get( 'v.tile' ), component, helper );
+		helper.initTile( component.get( 'v.tile' ), component, helper );
+	},
+
+	handleOnDrag : function(component, event, helper){
+		//console.log('ondrag:' + component.getGlobalId());
+	},
+
+	handleOnDragEnd : function(component, event, helper){
+		//event.preventDefault();
+		//console.log('dragEnd:' + component.getGlobalId());
+	},
+
+	handleOnDragEnter : function(component, event, helper){
+		//event.preventDefault();
+		//console.log('dragEnter:' + component.getGlobalId());
+	},
+
+	handleOnDragExit : function(component, event, helper){
+		//event.preventDefault();
+		//console.log('dragExit:' + component.getGlobalId());
+	},
+
+	handleOnDragLeave : function(component, event, helper){
+		//event.preventDefault();
+		//console.log('dragleave:' + component.getGlobalId());
+	},
+
+	handleOnDragOver : function(component, event, helper){
+		event.preventDefault();
+		//console.log('dragOver:' + component.getGlobalId());
+	},
+
+	handleOnDragStart : function(component, event, helper){
+		//event.preventDefault();
+		//console.log('dragStart:' + component.getGlobalId());
+		var tile = component.get('v.tile');
+		event.dataTransfer.setData('text', JSON.stringify(tile));
+	},
+
+	handleOnDrop : function(component, event, helper){
+		event.preventDefault();
+		//console.log('ondrop:' + component.getGlobalId());
+
+		var sourceTile = JSON.parse(event.dataTransfer.getData('text'));
+		var currentTile = component.get("v.tile");
+
+		var currentTileObj = JSON.parse(JSON.stringify(currentTile));
+
+		var tileEvent = component.getEvent("tileEvent");
+		tileEvent.setParams({
+			sourceTile: sourceTile.Id,
+			targetTile: currentTile.Id,
+			messageType: 'swap'
+		});
+		tileEvent.fire();
 	}
 })

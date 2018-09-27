@@ -29,7 +29,7 @@
 	 * @param component
 	 * @param helper
 	 **/
-	initTileLinks: function( quickLink, component, helper ){
+	initTile: function( quickLink, component, helper ){
 			//console.log( 'quickLinks have changed' );
 	}
 })

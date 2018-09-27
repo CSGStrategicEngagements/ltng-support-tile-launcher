@@ -14,17 +14,57 @@
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <aura:handler name="change" value="{!v.tile}" action="{!c.handleTileChanged}" />
     <!-- events -->
+    <aura:registerEvent name="tileEvent" type="c:ltng_TileLauncherEvent" />
+    <!-- methods -->
     <!-- elements -->
-    <li class='slds-size--1-of-2 slds-p-horizontal--large slds-p-vertical--xxx-small'>
+    <!-- see here for more on drag and drop
+        https://hackernoon.com/drag-drop-for-lightning-components-27230745a2eb
+        href="javascript:void(0);"
+    -->
+    <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
+        <a aria-describedby="drag-instructions" draggable="true"
+            ondrag="{!c.handleOnDrag}"
+            ondragend="{!c.handleOnDragEnd}"
+            ondragenter="{!c.handleOnDragEnter}"
+            ondragexit="{!c.handleOnDragExit}"
+            ondragleave="{!c.handleOnDragLeave}"
+            ondragover="{!c.handleOnDragOver}"
+            ondragstart="{!c.handleOnDragStart}"
+            ondrop="{!c.handleOnDrop}"
+            onclick="{!c.handleLinkClicked}"
+            class="slds-app-launcher__tile slds-text-link_reset slds-is-draggable"
+        >
+            <div class="slds-app-launcher__tile-figure">
+                <span class="slds-avatar slds-avatar_large">
+                    <lightning:icon iconName="{# '' + (v.tile.IconGroup__c?v.tile.IconGroup__c:'standard') + ':' + v.tile.IconName__c }" size="large" alternativeText="{# v.tile.IconName__c }" />
+                </span>
+                <!--
+                <span class="slds-avatar slds-avatar_large">
+                    <abbr class="slds-avatar__initials slds-icon-custom-59" title="company name">MC</abbr>
+                </span>
+                -->
+                <span class="slds-icon_container" title="Drag item to a new location">
+                    <lightning:icon iconName="utility:rows" alternativeText="drag me" size="xx-small" />
+                </span>
+            </div>
+            <div class="slds-app-launcher__tile-body">
+                <span class="slds-text-link">{# v.tile.Name }</span>
+                <p title="{# v.tile.Description__c }">{# v.tile.Description__c }</p>
+            </div>
+        </a>
+    </li>
+    <!--
+    <li class='slds-size-\-1-of-2 slds-p-horizontal-\-large slds-p-vertical-\-xxx-small'>
         <div class='slds-tile'>
             <span class='slds-truncate' title='{# v.tile.Name }'>
                 <aura:if isTrue='{! v.tile.IconName__c }'>
-                <span class="slds-avatar slds-avatar--x-small">
+                <span class="slds-avatar slds-avatar-\-x-small">
                     <lightning:icon iconName="{# '' + (v.tile.IconGroup__c?v.tile.IconGroup__c:'standard') + ':' + v.tile.IconName__c }" size="x-small" alternativeText="{# v.tile.IconName__c }" />
                 </span>
                 </aura:if>
-                <ui:outputURL class='slds-m-left--xx-small' click='{! c.handleLinkClicked }' label='{# v.tile.Name }' title='{# v.tile.Description__c }' />
+                <ui:outputURL class='slds-m-left-\-xx-small' click='{! c.handleLinkClicked }' label='{# v.tile.Name }' title='{# v.tile.Description__c }' />
             </span>
         </div>
     </li>
+    -->
 </aura:component>
