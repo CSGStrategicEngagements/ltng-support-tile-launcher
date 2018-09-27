@@ -4,7 +4,7 @@
 	 * @param linkTarget (String) - target address
 	 * @param tile (ltng_TileLauncherEntry__c) - current tile - if needed
 	 **/
-	followTileLink : function( linkType, linkTarget, tile ) {
+	followTileLink : function( linkType, linkTarget ) { // , tile
 		var navEvt;
 		if( linkType === 'Visualforce' ){
 				navEvt = $A.get('e.force:navigateToURL');
@@ -44,7 +44,7 @@
 	 * @param component
 	 * @param helper
 	 **/
-	initTile: function( quickLink, component, helper ){
+	initTile: function(){ //  quickLink, component, helper
 			//console.log( 'quickLinks have changed' );
 	}
 })
