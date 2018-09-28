@@ -120,7 +120,7 @@ public with sharing class ltng_TileLauncherCtrl {
 			results = [
 				SELECT id, DeveloperName, Navigation_Type__c, Navigation_Object_Format__c, URL_Format__c, Priority__c
 				FROM ltng_TileLauncherNavigationFormat__mdt
-				ORDER BY Navigation_Type__c, Priority__c
+				ORDER BY Navigation_Type__c, Priority__c desc
 			];		 
 		} catch(Exception err){
 			throw new AuraHandledException('Exception occurred when processing: getLauncherFormats');
