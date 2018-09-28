@@ -194,8 +194,8 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             IconGroup__c = 'standard',
             IconName__c = 'account',
             Name = 'Accounts',
-            Target__c = '/lightning/o/Account/list',
-            Type__c = 'URL'
+            Target__c = '/lightning/o/Account/home',
+            Type__c = 'Object Page'
 		));
 		
 		baseRecords.add(new ltng_TileLauncherEntry__c(
@@ -204,16 +204,16 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             IconGroup__c = 'standard',
             IconName__c = 'opportunity',
             Name = 'Opportunities',
-            Target__c = '/lightning/o/Opportunity/list',
-            Type__c = 'URL'
+            Target__c = '/lightning/o/Opportunity/home',
+            Type__c = 'Object Page'
 		));
 		
 		baseRecords.add(new ltng_TileLauncherEntry__c(
-            Description__c = 'Surgery Management System - your gateway to ...',
-            ExternalId__c = 'sys_sms',
+            Description__c = 'External System! Your gateway to payments and commisions.',
+            ExternalId__c = 'sys_externalSystem',
             IconGroup__c = 'standard',
             IconName__c = 'omni_supervisor',
-            Name = 'SMS',
+            Name = 'External System',
             Target__c = 'https://www.google.com',
             Type__c = 'URL'
 		));
@@ -224,9 +224,30 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             IconGroup__c = 'standard',
             IconName__c = 'custom',
             Name = 'Admin Only Link',
-            Target__c = '/lightning/o/ltng_TileLauncherEntry__c/list',
-            Permission__c = 'QuickLinksAdmin',
-            Type__c = 'URL'
+            Target__c = '/lightning/o/ltng_TileLauncherEntry__c/home',
+            Permission__c = 'ltng_TileLauncherAdmin',
+            Type__c = 'Object Page'
+		));
+		
+		baseRecords.add(new ltng_TileLauncherEntry__c(
+            Description__c = 'Directs you to the home page',
+            ExternalId__c = 'np_home',
+            IconGroup__c = 'standard',
+            IconName__c = 'home',
+            Name = 'Home',
+            Target__c = '/lightning/page/home',
+            Permission__c = '',
+            Type__c = 'Named Page'
+		));
+		
+		baseRecords.add(new ltng_TileLauncherEntry__c(
+            Description__c = 'Navigates you to a Lightning or VF Page',
+            ExternalId__c = 'nav_TileLauncher',
+            IconGroup__c = 'standard',
+            IconName__c = 'apps',
+            Name = 'Tile Launcher',
+            Target__c = '/lightning/n/ltng_TileLauncher',
+            Type__c = 'Navigation Item Page'
 		));
         
         try {

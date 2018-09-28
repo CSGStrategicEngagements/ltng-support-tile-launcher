@@ -12,6 +12,7 @@
     <aura:attribute name="search" type="String" />
     <!-- private attributes -->
     <aura:attribute name="matchesSearch" type="Boolean" default="true" />
+    <aura:attribute name="isGrabbed" type="boolean" default="false" />
     <!-- handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <aura:handler name="change" value="{!v.tile}" action="{!c.handleTileChanged}" />
@@ -36,7 +37,7 @@
             ondragstart="{!c.handleOnDragStart}"
             ondrop="{!c.handleOnDrop}"
             onclick="{!c.handleLinkClicked}"
-            class="slds-app-launcher__tile slds-text-link_reset slds-is-draggable"
+            class="{! 'slds-app-launcher__tile slds-text-link_reset slds-is-draggable ' + if(v.isGrabbed,'slds-is-grabbed','') }"
         >
             <div class="slds-app-launcher__tile-figure">
                 <span class="slds-avatar slds-avatar_large">

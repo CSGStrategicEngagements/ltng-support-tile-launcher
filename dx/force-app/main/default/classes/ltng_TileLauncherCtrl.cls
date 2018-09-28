@@ -105,4 +105,28 @@ public with sharing class ltng_TileLauncherCtrl {
 		
 		return( results );
 	}
+
+	/**
+	 * Determines the tile launcher formats.
+	 * @return ltng_TileLauncherNavigationFormat__mdt[] - collection of tile launcher navigation formats.
+	 **/
+	 @AuraEnabled
+	 public static ltng_TileLauncherNavigationFormat__mdt[] getLauncherFormats() {
+		ltng_TileLauncherNavigationFormat__mdt[] results;
+
+		//-- @TODO: review only retrieving formats that match an object format
+		//-- but this is cleaner and expected to be fairly small in number.
+		try {
+			results = [
+				SELECT id, DeveloperName, Navigation_Type__c, Navigation_Object_Format__c, URL_Format__c, Priority__c
+				FROM ltng_TileLauncherNavigationFormat__mdt
+				ORDER BY Navigation_Type__c, Priority__c desc
+			];		 
+		} catch(Exception err){
+			throw new AuraHandledException('Exception occurred when processing: getLauncherFormats');
+		}
+
+		return(results);
+	 }
+	
 }

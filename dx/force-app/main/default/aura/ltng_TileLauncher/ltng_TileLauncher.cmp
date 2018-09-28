@@ -16,12 +16,15 @@
     <aura:attribute name="maxTileSize" type="Integer" default="200" access="private" />
     <aura:attribute name="currentSearch" type="String" default="" access="private" />
     <aura:attribute name="tiles" type="ltng_TileLauncherEntry__c[]" access="private" />
+    <aura:attribute name="launcherFormats" type="Object[]" access="private" />
     <aura:attribute name="setupComplete" type="Boolean" default="false" access="private" />
     <!-- handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <aura:handler name="tileEvent" event="c:ltng_TileLauncherEvent"
         action="{!c.handleTileEvent}"
     />
+    <!-- navigators -->
+    <lightning:navigation aura:id="navService"/>
     <!-- events -->
     <!-- elements -->
     <div class='narrow homeHomeCard'>

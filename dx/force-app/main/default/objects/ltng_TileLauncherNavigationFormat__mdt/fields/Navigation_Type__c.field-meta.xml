@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Type__c</fullName>
-    <description>Please note that the Visualforce page can include URL Parameters.</description>
+    <fullName>Navigation_Type__c</fullName>
+    <description>For more information, please see:
+https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm</description>
     <externalId>false</externalId>
-    <inlineHelpText>Whether the target is a Record Id, Visualforce page, URL, etc.</inlineHelpText>
-    <label>Type</label>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Knowledge Article - Knowledge Article
+Named Page - access: &#39;home&#39;, &#39;chatter&#39;, &#39;today&#39;
+Navigation Item - Custom Tab
+Object Page - Recent or list views for an object
+Record Page - Directly access a record
+Record Relationship Page - Related List</inlineHelpText>
+    <label>Navigation Type</label>
     <required>true</required>
-    <trackHistory>false</trackHistory>
-    <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>URL</fullName>
-                <default>false</default>
-                <label>URL</label>
-            </value>
-            <value>
                 <fullName>Knowledge Article</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>Knowledge Article</label>
             </value>
             <value>

@@ -39,7 +39,7 @@
                 with
                 src="{!v.resourceAddress}"
             -->
-            <img class="hero-banner" src="{! '/resource/' + v.resourceName }" alt="{!v.description}"
+            <img class="hero-banner" src="{! v.resourceAddress }" alt="{!v.description}"
                 style="{! 'width:' + v.width + '; height:' + v.height}"
             />
         </a>
