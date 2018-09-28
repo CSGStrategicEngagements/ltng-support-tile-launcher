@@ -8,7 +8,7 @@
 	initTile: function(component){ // , helper
 		component.set("v.matchesSearch", true);
 	},
-	
+
 	/**
 	 * Determines if the search matches
 	 * @param tile (Object)
@@ -26,6 +26,7 @@
 		}
 	},
 
-	//--- utility methods
+	//-- utility methods
+	
 	noop : function(){}
 })

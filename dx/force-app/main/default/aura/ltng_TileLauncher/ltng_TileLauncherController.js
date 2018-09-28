@@ -1,6 +1,8 @@
 ({
 	/** initializes the component **/
 	init: function(component, event, helper) {
+		helper.initialize(component, helper);
+
 		//console.log( 'quickLinks was initialized - placebreakpoint to learn more.' );
 		helper.loadTiles( component, helper );
 	},
@@ -14,6 +16,8 @@
 			helper.handleSwapEvent(component, event, helper);
 		} else if (messageType === 'click') {
 			helper.handleClickEvent(component, event, helper);
+		} else if (messageType === 'moveUp') {
+			helper.handleMoveUpEvent(component, event, helper);
 		} else {
 			helper.displayError('swap', component, event, helper);
 		}
@@ -23,5 +27,9 @@
 		//console.log('handleSearchChanged');
 		var currentSearch = event.getParam('value');
 		component.set("v.currentSearch", currentSearch);
+	},
+
+	handleEditClick : function(component, event, helper){
+		helper.toggleEditMode(component, helper);
 	}
 })

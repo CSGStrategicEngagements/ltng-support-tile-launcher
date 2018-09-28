@@ -17,7 +17,9 @@
     <aura:attribute name="currentSearch" type="String" default="" access="private" />
     <aura:attribute name="tiles" type="ltng_TileLauncherEntry__c[]" access="private" />
     <aura:attribute name="launcherFormats" type="Object[]" access="private" />
+    <aura:attribute name="editMode" type="Boolean" default="false" access="private" />
     <aura:attribute name="setupComplete" type="Boolean" default="false" access="private" />
+    <aura:attribute name="supportDragAndDrop" type="Boolean" default="false" access="private" />
     <!-- handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <aura:handler name="tileEvent" event="c:ltng_TileLauncherEvent"
@@ -29,6 +31,15 @@
     <!-- elements -->
     <div class='narrow homeHomeCard'>
         <div class='slds-card forceBaseCard'>
+            <!-- <aura:if isTrue="{!!v.supportDragAndDrop}"> -->
+                <div class='tile-launcher-actions'>
+                    <lightning:buttonIcon variant="{! if(v.editMode, 'border-inverse', 'border-filled') }"
+                        iconName="{! if(!v.editMode, 'utility:edit', 'utility:save') }"
+                        class="{! if(v.editMode, 'slds-theme_alt-inverse', '') }"
+                        onclick="{!c.handleEditClick}" alternativeText="Edit"
+                    />
+                </div>
+            <!-- </aura:if> -->
             <div class='slds-card__header slds-grid'>
             	<header class='slds-media slds-media--center slds-has-flexi-truncate'>
                 	<div class='slds-media__body'>
@@ -56,7 +67,12 @@
                 <div class="slds-assistive-text" id="drag-instructions">Press space bar to move this app within the list.</div>
                 <ul class='slds-grid slds-grid--pull-padded slds-wrap'>
                 <aura:iteration items='{! v.tiles }' var='tile'>
-                    <c:ltng_TileLauncherTile tile="{!tile}" search="{!v.currentSearch}" />
+                    <aura:if isTrue="{!v.supportDragAndDrop}">
+                        <c:ltng_TileLauncherDraggableTile tile="{!tile}" search="{!v.currentSearch}" editMode="{!v.editMode}" />
+                    </aura:if>
+                    <aura:if isTrue="{!!v.supportDragAndDrop}">
+                        <c:ltng_TileLauncherTile tile="{!tile}" search="{!v.currentSearch}" editMode="{!v.editMode}" />
+                    </aura:if>
                 </aura:iteration>
                 </ul>
             </div>

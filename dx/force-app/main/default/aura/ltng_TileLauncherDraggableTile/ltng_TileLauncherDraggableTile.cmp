@@ -1,0 +1,79 @@
+<!--
+/**
+* Draggable tile used within the Tile Launcher
+* @component: ltng_TileLauncherDraggableTile
+**/
+-->
+<aura:component
+    access="global"
+>
+    <!-- attributes -->
+    <aura:attribute name="tile" type="ltng_TileLauncherEntry__c" />
+    <aura:attribute name="search" type="String" />
+    <aura:attribute name="editMode" type="Boolean" />
+    <!-- private attributes -->
+    <aura:attribute name="matchesSearch" type="Boolean" default="true" />
+    <aura:attribute name="isGrabbed" type="boolean" default="false" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler name="change" value="{!v.tile}" action="{!c.handleTileChanged}" />
+    <aura:handler name="change" value="{!v.search}" action="{!c.handleSearchChanged}" />
+    <!-- events -->
+    <aura:registerEvent name="tileEvent" type="c:ltng_TileLauncherEvent" />
+    <!-- methods -->
+    <!-- elements -->
+    <!-- see here for more on drag and drop
+        https://hackernoon.com/drag-drop-for-lightning-components-27230745a2eb
+    -->
+    <aura:if isTrue="{!v.matchesSearch}">
+    <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
+        <!--
+            ondrag="{!c.handleOnDrag}"
+            ondragenter="{!c.handleOnDragEnter}"
+            ondragexit="{!c.handleOnDragExit}"
+            ondragleave="{!c.handleOnDragLeave}"
+        -->
+        <a aria-describedby="drag-instructions" draggable="{!v.editMode}"
+            id="{! 'button_' + v.editMode }"
+            ondragstart="{!c.handleOnDragStart}"
+            ondragend="{!c.handleOnDragEnd}"
+            ondragover="{!c.handleOnDragOver}"
+            ondrop="{!c.handleOnDrop}"
+            onclick="{!c.handleLinkClicked}"
+            class="{! 'slds-app-launcher__tile slds-text-link_reset slds-is-draggable ' + if(v.isGrabbed,'slds-is-grabbed','') }"
+        >
+            <div class="slds-app-launcher__tile-figure">
+                <span class="slds-avatar slds-avatar_large">
+                    <lightning:icon
+                        iconName="{# '' + (v.tile.IconGroup__c?v.tile.IconGroup__c:'standard') + ':' + v.tile.IconName__c }"
+                        size="large" alternativeText="{# v.tile.IconName__c }"
+                    />
+                </span>
+                <aura:if isTrue="{!v.editMode}">
+                <span class="slds-icon_container" title="Drag item to a new location">
+                    <lightning:icon iconName="utility:rows" alternativeText="drag me" size="xx-small" />
+                </span>
+                </aura:if>
+            </div>
+            <div class="{! 'slds-app-launcher__tile-body ' + if(v.editMode,'slds-theme_shade slds-theme_alert-texture','') }">
+                <span class="slds-text-link">{# v.tile.Name }</span>
+                <p title="{# v.tile.Description__c }">{!v.editMode} - {# v.tile.Description__c }</p>
+            </div>
+        </a>
+    </li>
+    </aura:if>
+    <!--
+    <li class='slds-size-\-1-of-2 slds-p-horizontal-\-large slds-p-vertical-\-xxx-small'>
+        <div class='slds-tile'>
+            <span class='slds-truncate' title='{# v.tile.Name }'>
+                <aura:if isTrue='{! v.tile.IconName__c }'>
+                <span class="slds-avatar slds-avatar-\-x-small">
+                    <lightning:icon iconName="{# '' + (v.tile.IconGroup__c?v.tile.IconGroup__c:'standard') + ':' + v.tile.IconName__c }" size="x-small" alternativeText="{# v.tile.IconName__c }" />
+                </span>
+                </aura:if>
+                <ui:outputURL class='slds-m-left-\-xx-small' click='{! c.handleLinkClicked }' label='{# v.tile.Name }' title='{# v.tile.Description__c }' />
+            </span>
+        </div>
+    </li>
+    -->
+</aura:component>
