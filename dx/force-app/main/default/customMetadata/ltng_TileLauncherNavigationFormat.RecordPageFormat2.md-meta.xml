@@ -17,9 +17,9 @@ https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/compo
         <value xsi:type="xsd:string">{
    &quot;type&quot;: &quot;standard__recordPage&quot;,
    &quot;attributes&quot;: {
-	   &quot;recordId&quot;: &quot;&lt;%_2%&gt;&quot;,
-	   &quot;objectApiName&quot;: &quot;&lt;%_1%&gt;&quot;,
-	   &quot;actionName&quot;: &quot;&lt;%_3%&gt;&quot;
+	   &quot;recordId&quot;: &quot;&lt;%=_2%&gt;&quot;,
+	   &quot;objectApiName&quot;: &quot;&lt;%=_1%&gt;&quot;,
+	   &quot;actionName&quot;: &quot;&lt;%=_3%&gt;&quot;
    }
 }</value>
     </values>
