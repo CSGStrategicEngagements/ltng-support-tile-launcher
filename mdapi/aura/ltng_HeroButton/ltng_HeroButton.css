@@ -1,0 +1,8 @@
+.THIS .hero-banner {
+    border: 1px solid #666;
+    -webkit-box-shadow: -11px 10px 20px -5px rgba(222,222,222,0.25);
+    -moz-box-shadow: -11px 10px 20px -5px rgba(222,222,222,0.25);
+    box-shadow: -11px 10px 20px -5px rgba(222,222,222,0.25);
+    max-width: 800px;
+    max-height: 200px;
+}

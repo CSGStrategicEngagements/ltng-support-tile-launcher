@@ -1,0 +1,2 @@
+staticresources/ltng_TileLauncherHero.resource
+staticresources/ltng_TileLauncherHero2.resource

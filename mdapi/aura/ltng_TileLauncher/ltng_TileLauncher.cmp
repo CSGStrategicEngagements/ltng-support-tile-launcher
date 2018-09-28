@@ -1,0 +1,65 @@
+<!--
+/**
+* User Friendly list of tiles that can launch different apps or navigate within Salesforce.
+* @component: ltng_TileLauncher
+**/
+-->
+<aura:component
+    controller="ltng_TileLauncherCtrl"
+    implements="force:appHostable,flexipage:availableForAllPageTypes"
+    access="global"
+>
+    <!-- attributes -->
+    <aura:attribute name="debug" type="Boolean" default="false" access="global" />
+    <aura:attribute name="enableCaching" type="Boolean" default="false" access="global" />
+    <!-- private attributes -->
+    <aura:attribute name="maxTileSize" type="Integer" default="200" access="private" />
+    <aura:attribute name="currentSearch" type="String" default="" access="private" />
+    <aura:attribute name="tiles" type="ltng_TileLauncherEntry__c[]" access="private" />
+    <aura:attribute name="launcherFormats" type="Object[]" access="private" />
+    <aura:attribute name="setupComplete" type="Boolean" default="false" access="private" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler name="tileEvent" event="c:ltng_TileLauncherEvent"
+        action="{!c.handleTileEvent}"
+    />
+    <!-- navigators -->
+    <lightning:navigation aura:id="navService"/>
+    <!-- events -->
+    <!-- elements -->
+    <div class='narrow homeHomeCard'>
+        <div class='slds-card forceBaseCard'>
+            <div class='slds-card__header slds-grid'>
+            	<header class='slds-media slds-media--center slds-has-flexi-truncate'>
+                	<div class='slds-media__body'>
+                    	<h2>
+                            <a href='javascript:void(0);' class='slds-card__header-link slds-truncate'>
+                            	<span class='slds-text-heading--small'>Quick Links</span>
+                            </a>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-app-launcher__header-search">
+            <div class="slds-form-element">
+                <label for="app-launcher-search" class="slds-form-element__label slds-assistive-text">Find an app</label>
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                    <lightning:input aura:id="search" type="search" label="search" name="search"
+                        onchange="{!c.handleSearchChanged}"
+                        placeholder="Find an app..."
+                    />
+                </div>
+            </div>
+            </div>
+            <div class='slds-card__body slds-m-around_medium'>
+                <div class="slds-assistive-text" id="drag-live-region" aria-live="assertive"></div>
+                <div class="slds-assistive-text" id="drag-instructions">Press space bar to move this app within the list.</div>
+                <ul class='slds-grid slds-grid--pull-padded slds-wrap'>
+                <aura:iteration items='{! v.tiles }' var='tile'>
+                    <c:ltng_TileLauncherTile tile="{!tile}" search="{!v.currentSearch}" />
+                </aura:iteration>
+                </ul>
+            </div>
+        </div>
+    </div>
+</aura:component>

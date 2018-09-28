@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>TileLauncherDemoLogo</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Tile Launcher Demo App</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Tile Launcher</label>
+    <navType>Standard</navType>
+    <tabs>ltng_TileLauncherDemoSetup</tabs>
+    <tabs>ltng_TileLauncher</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

@@ -5,4 +5,4 @@ createTemplateProject.sh
 **/.vscode
 **/Security.settings*
 /ltng-support-tile-launcher.code-workspace
-/mdapi
+/mdapiRefresh

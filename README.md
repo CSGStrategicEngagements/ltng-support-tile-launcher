@@ -1,278 +1,121 @@
-# INTERNAL NOTES
-
-Wait, what is this?
-
-This is meant to be a simple starting point for creating Lightning demo projects
-
-Sprintf templating
-https://gist.github.com/paulroth3d/95ce8c7d1c74377c39fb199a9a87dedc
-
-look into passing functions for parameters
-https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/ref_attr_types_function.htm
-
-# Structure of the project
-
-* doc - documentation resources
-  * images - images for documentation
-* data - data used in demo
-  * queries - queries used in extracting data for demos
-  * trees - data trees used for demos
-* dx - salesforce dx project
-* mdapi - mdapi version of dx project
-
-# How do I use this?
-
-**If using windows: We're in the middle of migrating to a salesforce cli plugin shortly. Please see the How do I use this manual steps below**
-
-**1.** Download the raw shellscript here:
-[https://github.com/SalesforceCloudServices/ltng-support-demo-template/blob/createTemplateProject/createTemplateProject.sh](https://github.com/SalesforceCloudServices/ltng-support-demo-template/blob/createTemplateProject/createTemplateProject.sh)
-
-Place it in a folder that you'll want to store your templates. (The template will be cloned and checked out in the same folder)
-
-**2.** Create a github project within the [SalesforceCloudServices Github](https://github.com/SalesforceCloudServices/) <br />
-with a name similar to: `ltng-support-NAME_OF_DEMO` <br />
-(for example: ltng-support-url-hack)
-
-And copy your new project name.
-
-**(The script will clone the project for you, and populate master for you)**
-	
-**3.** Run the Shellscript and follow the prompts
-
-	./createTemplateProject.sh
-	
-	... yadda yadda - remember to make a repo ...
-	
-	What is the name of the new repository? (ex: ltng-support-url-hack)
-	ltng-support-my-project-name
-	
-	
-	The git repository URL is expected to be:
-	git@github.com:SalesforceCloudServices/ltng-support-my-project-name.git
-	Is this correct? [Y/N]
-	y
-	
-	
-	This repository already seems to exist.
-	Should we continue? [Y/N]
-	y
-	
-	...
-	
-	Cloning into 'ltng-support-lds-responsive'...
-	
-	...
-	
-	renaming and adding origins
-	
-	...
-	
-	pushing project master
-	
-	...
-	
-	creating the dx project
-	
-	...	
-	
-	-- Your project  has been created
-	
-	
-# How do I use this: Manual Steps
-
-We're in the middle of transitioning from shellscript to a salesforce cli plugin that will accomplish the same as the shellscript.
-
-The manual steps below do the same as the shellscript.
-
-**1.** clone this repository where you will keep your templates:
-
-	git clone git@github.com:SalesforceCloudServices/ltng-support-demo-template.git
-	
-**2.** import to your demo repo of a similar name: ltng-support-NAME_OF_DEMO
-
-**3.** Create a Salesforce DX project in the 'dx' folder
-
-	//-- newRepositoryName would be the ltng-support-NAME_OF_DEMO
-	//-- ex: newRepositoryName="ltng-support-bootstrap"
-	sfdx force:project:create --projectname "${newRepositoryName}" -d dx
-	
-**4.** Rename the org in `dx/config/project-scratch-def.json`
-	Change "orgName" value in the JSON to a better name of your scratch org (such as ltng-support-NAME_OF_DEMO)
-
-**5.** Create a scratch org to prepare and store your demo
-
-	// -a [[How you would like to identify the org]]
-	// -s [[make the project a default
-	// -v [[name of the alias of the lightning support org]]
-	// -d [[duration - in days]]
-	// -f /path/to/project-scratch-def.json
-	
-	sfdx force:org:create -d 20 -f dx/config/project-scratch-def.json -s -v [[your hub alias]] -a [[new alias for this scratch org]]
-	
-	ex:
-	
-	sfdx force:org:create -d 20 -f dx/config/project-scratch-def.json -s -v lightningSupport -a SOME_ALIAS
-	
-**6.** CLEANUP: Add `**.profiles` within dx/.forceignore, to ensure we do not track profiles (only permission sets)
-
-# Quick Help:
-
-**How do I create a dx project?** <br />
-[sfdx force:project:create](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_project.htm#cli_reference_force_project)
-
-**How do I run a script after installation?** <br />
-[Create an Apex Class that implements InstallHandler](https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/apex_post_install_script_create.htm)
-
-**How do I convert the dx source to metadata api (mdapi folder)?**
-
-	sfdx force:source:convert -r force-app -d ../mdapi
-
-**How do I create a package?**
-
-Be careful, you need to specify the --containeroptions/-o as Unlocked when you create it (and this cannot be changed)
-
---containeroptions/-o Unlocked  
---name/-n Name of the package  
---description/-d Description of the package  
---targetdevhubusername/-v Alias of the Dev Hub  
-
-	ex:
-	sfdx force:package2:create -o Unlocked -n ltng-support-url-hack -d "Demos of how to replace URL Hack Buttons in Lightning" -v lightningSupport
-	
-[See Here for more](https://trailhead.salesforce.com/en/modules/unlocked-packages-for-customers/units/build-your-first-unlocked-package)
-
-**Then update the `sfdx-project.json` file**
-
-Add the following to the `packageDirectories` element in that file:
-
-	{
-	  "packageDirectories": [ 
-	    {
-	      "path": "force-app",
-	      "default": true,
-	      -- add these items below
-	      "id": "0Ho_xxx", -- your package2 ID (not subscriber)
-	      "versionName": "Version 1.0",
-	      "versionNumber": "1.0.0.NEXT"
-	      -- add the items above
-	    }
-	  ],
-	  "namespace": "",
-	  "sfdcLoginUrl": "https://login.salesforce.com",
-	  "sourceApiVersion": "42.0"
-	}
-	
-**THEN you need to create a package version**
-
-sfdx force:package2:version:create --directory force-app/ --wait 10
-
-**Then** - change the deploy url within the `deploy via url` section down below.
-
-	ex: 
-	[https://test.salesforce.com/packaging/installPackage.apexp?p0=YOUR_VERSION_ID](https://test.salesforce.com/packaging/installPackage.apexp?p0=YOUR_VERSION_ID)
-	
-	and
-	(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0= YOUR_VERSION_ID ` <br />
-	if you are already logged in)
-	
-	turns into
-	
-	[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sreiQAA](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A000002sreiQAA)
-	
-	and
-	(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0= 04t6A000002sreiQAA` <br />
-	if you are already logged in)
-	
-**How do I export data to trees?**
-
-Create a text file under /data/queries/API_Name__c.txt, with the query to use when exporting out the data.
-
-(Note the query should not include any fields that are read only - such as System fields, etc, but can include [parent-child queries](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_using.htm).
-
-	SELECT Name,
-	  (
-	    SELECT LastName
-	    FROM Contacts
-	  )
-	FROM Account
-
-Then export using the following command:
-
-	sfdx force:data:tree:export -q data/queries/exampleQuicklinks.txt -d data/trees/
-
-**How do I get my password again?**
-
-sfdx force:user:display -u USERNAME
-
-**How do I create a scratch org?**
-
-	// -a [[How you would like to identify the org]]
-	// -s [[make the project a default
-	// -v [[name of the alias of the lightning support org]]
-	// -d [[duration - in days]]
-	// -f /path/to/project-scratch-def.json
-	
-	sfdx force:org:create -v lightningSupport -d 20 -f dx/config/project-scratch-def.json -s -a SOME_ALIAS
-	
-# Before Releasing
-
-* Complete the work for the demo in a scratch org
-  * Update the demo scripts as needed
-  * Ensure the [How to Use](#how-to-use) section is accurate
-  * Review the @CHANGE tags within this doc are addressed
-  * Review the api names all match (ltng_*) as best as possible)
-  * Update any button Related Lists and Object Search Layouts
-* Export the data to trees (See [Quick Help](#quick-help) for more)
-  * Create all extracts as txt files under /data/queries/ <br /> see [Relationship Queries](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships.htm)
-     * `ex: select Name, (select FirstName, LastName from Contacts) from Account`
-  * Extract the data into /data/trees/
-     * ex: `sfdx force:data:tree:export -q data/queries/exampleQuicklinks.txt -d data/trees/`
-* Create an Unlocked Package for delivery (See [Quick Help](#quick-help) for more)
-  * `sfdx force:package2:create -o Unlocked -n ltng-support-url-hack -d "Demos of how to replace URL Hack Buttons in Lightning" -v lightningSupport`
-  * Update in sfdx-project.json
-     * "id": "0Ho_xxx", -- your package2 ID (not subscriber)
-	  * "versionName": "Version 1.0",
-	  * "versionNumber": "1.0.0.NEXT"
-* Create Package Version (and new version when code is updated)
-  * `sfdx force:package2:version:create --directory force-app/ --wait 10`
-* Create a new scratch org (through the createTemplateProject ...) to test
-  * Unlocked Package
-  * DX Deployment
-  * `sfdx force:org:create -v lightningSupport -d 20 -f dx/config/project-scratch-def.json -s -a SOME_ALIAS`
-* Convert all DX data into metadata for those that need ant (Last Step)
-  * `cd dx; sfdx force:source:convert -r force-app -d ../mdapi`
-
-
-# DELETE EVERYTHING ABOVE WHEN READY
-
------
------
-------
-------
-------
-------
-------
-
-
 # Overview
 
-Overview_of_what_the_project_represents
+Have your end users ever needed to provide a customizable launchpad within Salesforce (Lightning Experience or Mobile)?
+
+We've provided two specific components: the 'Tile Launcher' and 'Hero Button' components to provide a secured way for your end users to start their day.
+
+They can navigate to other apps, other areas within salesforce choosing from a user sortable list of tiles - all as a one stop launching pad.
+
+![Demo of Tile Launcher](docs/images/TileLauncherDemo.gif)
+
+[Customizable](docs/images/ExampleTile.png) with [any choice of standard icons](https://www.lightningdesignsystem.com/icons/), [secured by custom permissions](docs/images/securedByCustomPermission.jpg) and [navigatable to internal or external areas](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm).
+
+![Demo of Tile Launcher Customization](docs/images/tileLauncherCustomizeDemo.gif)
+
+Or Administrators can easily highlight upcoming activities or events - using a customizable Hero Button that can navigate them to other pages or external apps. 
+
+![Demo of Hero Button](docs/images/heroButtonDemo.gif)
+
 
 **Please note: sample code (metadata api and dx formats) are available in the [mdapi](./mdapi) and [dx](./dx) folders above**
 
-# Demo
-
-![Gif Demo](docs/images/demo.gif)
-
-What_the_demo_demonstrates_and_why_we_care
-
-# How to Use
-
-How_do_you_use_this_demo
 
 # TLDR How
 
-* Bullet_points_of_how_this_was_done
+## Tile Launcher
+
+**1.** Assign either of the following permission sets:
+
+* Tile Launcher Demo Admin - someone that can administer the Tile Launcher
+* Tile Launcher Demo Participant - someone that can see the Tile Launcher
+
+(the base permissions are: access to the Tile Launcher app builder page, and read access to the Tile Launcher Entry objects)
+
+**2.** Access the Tile Launcher from the 'App Launcher' dice
+
+Either from the Desktop:
+
+![Demo of Tile Launcher](docs/images/TileLauncherDemo.gif)
+
+Or from Mobile:
+
+![Screenshot from Mobile](docs/images/tileLauncherMobile.gif)
+
+### Adding a new Tile:
+
+**1.** As an administrator (or someone with the `Tile Launcher Demo Admin` permission set), Navigate to the list of `Tile Launcher Entries`
+
+<table>
+	<tr>
+		<th>What to enter</th><th>Description</th><th>Example</th>
+	</tr>
+	<tr>
+		<td>Tile Launcher Entry Name</td>
+		<td>Not shown to users, but human name to find this tile</td>
+		<td>Example Tile</td>
+	</tr>
+	<tr>
+		<td>External Id</td>
+		<td>Not shown to end users, but used for simpler data loads</td>
+		<td>uniqueNameUsedWhenLoading</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>Description shown to the end user - next to the icon</td>
+		<td>Your gateway to wonders!</td>
+	</tr>
+	<tr>
+		<td>Type</td>
+		<td>The type of target we reference. <a href='#types-of-targets'>More below</a></td>
+		<td>URL or Named Page</td>
+	</tr>
+	<tr>
+		<td>Target</td>
+		<td>The url to navigate to. (We recommend removing the domain)</td>
+		<td>Recommended: /lightning/page/home <br />
+		although https://your-domain.my.salesforce.com/lightning/page/home works too</td>
+	</tr>
+	<tr>
+		<td>Icon Name</td>
+		<td>One of the names from <a href='https://lightningdesignsystem.com/icons'>the lightning design sytem</a></td>
+		<td>account, entitlement_process or environment_hub</td>
+	</tr>
+	<tr>
+		<td>Icon Group</td>
+		<td>The group the icon belongs to (the header in the list)</td>
+		<td>Standard Icons means 'standard', Custom Icons means 'custom'</td>
+	</tr>
+	<tr>
+		<td>Permission</td>
+		<td>The API name of the custom permission required to see this tile. Blank if anyone can see it.</td>
+		<td>YourCustomPermissionAPIName</td>
+	</tr>
+</table>
+
+![Example Tile](docs/images/ExampleTile.png)
+
+### Types of Targets
+
+* URL - any external system - uses [NavigateToURL](https://developer.salesforce.com/docs/component-library/bundle/force:navigateToURL/documentation)
+* Knowledge Article - reference a knowledge article
+* Named Page - access: 'home', 'chatter', 'today' 
+* Navigation Item - Custom Tab 
+* Object Page - Recent or list views for an object 
+* Record Page - Directly access a record 
+* Record Relationship Page - Related List
+
+All except URL use the Lightning:Navigation component to navigate to different areas of the app based on the [PageReference patterns](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm). [See Here for more on what those types mean](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm)
+
+Although the Type isn't as important yet (it finds the first match based on Priority of the Custom Metadata records), it is important to align as best as possible for the day that it is necessary.
+
+## Hero Button
+
+Simply drag and drop the Hero Button within the App Builder to use.
+(The App Builder is found under Setup)
+
+It will be available to users that see that page.
+
+![Configure in App Builder](docs/images/heroButtonInAppBuilder.jpg)
 
 ---
 
@@ -292,13 +135,9 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-@CHANGE: update the link to the installation id (starts with 04t...)
--- ex: /installPackage.apexp?p0=04t6A000002sreiQAA
--- be sure that there are no spaces (it happens...)
+[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GJtQAM](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GJtQAM)
 
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=INSTALL_SF_ID](https://test.salesforce.com/packaging/installPackage.apexp?p0= INSTALL_SF_ID)
-
-(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=INSTALL_SF_ID` <br />
+(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A0000038GJtQAM` <br />
 if you are already logged in)
 
 @CHANGE: update image to the install package
@@ -330,35 +169,6 @@ Thats it. See the [How to Use](#how-to-use) section for how to use the app.
 @CHANGE: Remove the `Known Issue` section if record types are not needed,
 -- otherwise, make the following changes in this section
 
-#### -- Known Issue -- Add the missing permissions on the permission set
-
-If you get an error saying 'This record is not available' (when creating records),
-you are likely affectd by a known issue with Unlocked Package deploys.
-
-(This is also mentioned from the Setup page)
-
-We are working with different teams, but it appears as though the installation works correctly from Salesforce CLI, but requires additional steps from the insllation URL.
-
-**We appologize for this inconvenience and are working towards correcting it**
-
-**1.** Navigate to the `Demo Setup` page
-
-@CHANGE: update screenshot to exact image within the Setup
-@CHANGE: update the DemoSetup Component to the exact names of the record types needed.
-@CHANGE: update to the exact names of the record types to add
-
-![Dependent Picklist Demo page](docs/images/correctPermissionSet.png)
-
-and click on the link **Add the 'Master', 'Type A' and 'Type B' record types to the permission set'**
-
-This will navigate you to the permission set in your org.
-
-**3.** Click edit and enable the record types for that permission set.
-
-@CHANGE: update screenshot to exactly the the RecordTypes needed.
-
-![Add record types to permission set](docs/images/correctPermissionSet2.png)
-
 ## Installing via the Salesforce CLI
 
 This assumes you have already installed the [Salesforce CLI]() and [Connected the Salesforce CLI to your org](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm).
@@ -371,10 +181,7 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 
 **2.** Add the permission set to your user
 
-@CHANGE: Always use permission sets
-- Set the {PermissionSetApiName} to the API name of your Permission Set.
-
-	sfdx force:user:permset:assign -n {PermissionSetApiName} -u [[orgAlias]]
+	sfdx force:user:permset:assign -n TileLauncherDemoAdmin -u [[orgAlias]]
 	
 **3.** Upload the data
 

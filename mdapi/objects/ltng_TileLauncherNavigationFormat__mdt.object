@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Format for a url to provide navigation for Tiles in the Tile Launcher</description>
+    <label>Tile Launcher Navigation Format</label>
+    <pluralLabel>Tile Launcher Navigation Formats</pluralLabel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Description of this pattern / what it is this meant to match</inlineHelpText>
+        <label>Description</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Navigation_Object_Format__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Format of the navigation object (using matches from the URL Format)</inlineHelpText>
+        <label>Navigation Object Format</label>
+        <required>true</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Navigation_Type__c</fullName>
+        <description>For more information, please see:
+https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Knowledge Article - Knowledge Article
+Named Page - access: &#39;home&#39;, &#39;chatter&#39;, &#39;today&#39;
+Navigation Item - Custom Tab
+Object Page - Recent or list views for an object
+Record Page - Directly access a record
+Record Relationship Page - Related List</inlineHelpText>
+        <label>Navigation Type</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Knowledge Article</fullName>
+                    <default>true</default>
+                    <label>Knowledge Article</label>
+                </value>
+                <value>
+                    <fullName>Named Page</fullName>
+                    <default>false</default>
+                    <label>Named Page</label>
+                </value>
+                <value>
+                    <fullName>Navigation Item Page</fullName>
+                    <default>false</default>
+                    <label>Navigation Item Page</label>
+                </value>
+                <value>
+                    <fullName>Object Page</fullName>
+                    <default>false</default>
+                    <label>Object Page</label>
+                </value>
+                <value>
+                    <fullName>Record Page</fullName>
+                    <default>false</default>
+                    <label>Record Page</label>
+                </value>
+                <value>
+                    <fullName>Record Relationship Page</fullName>
+                    <default>false</default>
+                    <label>Record Relationship Page</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <defaultValue>100</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Items with higher priority are checked first.
+(The first one that matches, will be used)</inlineHelpText>
+        <label>Priority</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>URL_Format__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Regular expression for this pattern</inlineHelpText>
+        <label>URL Format</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Navigation_Type__c</columns>
+        <columns>URL_Format__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+</CustomObject>
