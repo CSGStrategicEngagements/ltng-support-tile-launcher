@@ -1,5 +1,11 @@
 # Overview
 
+Please see the [Installation](#install) section below for more on how to install on your Sandbox / Demo org.
+
+**Please note: sample code (metadata api and dx formats) are is also available in the [mdapi](./mdapi) and [dx](./dx) folders above**
+
+---
+
 Have your end users ever needed to provide a customizable launchpad within Salesforce (Lightning Experience or Mobile)?
 
 We've provided two specific components: the 'Tile Launcher' and 'Hero Button' components to provide a secured way for your end users to start their day.
@@ -16,8 +22,6 @@ Or Administrators can easily highlight upcoming activities or events - using a c
 
 ![Demo of Hero Button](docs/images/heroButtonDemo.gif)
 
-
-**Please note: sample code (metadata api and dx formats) are available in the [mdapi](./mdapi) and [dx](./dx) folders above**
 
 
 # TLDR How
@@ -140,8 +144,6 @@ Please login to an available sandbox and click the link below.
 (or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A0000038GJtQAM` <br />
 if you are already logged in)
 
-@CHANGE: update image to the install package
-
 ![Install for Admins](docs/images/installPackage.png)
 
 It is recommended to install for Admins Only (but all options will work)
@@ -150,13 +152,9 @@ It is recommended to install for Admins Only (but all options will work)
 
 Next, click on the 'dice' and open the 'URL Hack Demo' app.
 
-@CHANGE: update image to your app in the launcher
-
 ![URL Hack Demo App](docs/images/appInLauncher.png)
 
 and run `Setup` from the `Demo Setup` tab.
-
-@CHANGE: update the image to your setup page
 
 ![URL Hack Demo Setup](docs/images/demoSetup1.png)
 
@@ -164,10 +162,7 @@ This will then perform any additional setup (such as creating records, etc).
 
 ##### Run the Demos
 
-Thats it. See the [How to Use](#how-to-use) section for how to use the app.
-
-@CHANGE: Remove the `Known Issue` section if record types are not needed,
--- otherwise, make the following changes in this section
+Thats it. See the [How to Use](#tldr-how) section for how to use the app.
 
 ## Installing via the Salesforce CLI
 
@@ -183,19 +178,21 @@ However, the Salesforce CLI can be used with any org and does not require Salesf
 
 	sfdx force:user:permset:assign -n TileLauncherDemoAdmin -u [[orgAlias]]
 	
-**3.** Upload the data
+**3.** Open the Org and run the Tile Launcher Setup
 
-@CHANGE: If data is needed, update the tree file name, often the name of the SObject
+Next, click on the 'dice' and open the 'URL Hack Demo' app.
 
-	sfdx force:data:tree:import -f data/tree/{SOBJECT}.json -u [[orgAlias]]
-	
-...
+![URL Hack Demo App](docs/images/appInLauncher.png)
+
+and run `Setup` from the `Demo Setup` tab.
+
+![URL Hack Demo Setup](docs/images/demoSetup1.png)
+
+This will then perform any additional setup (such as creating records, etc).
 
 ##### Run the Demos
 
-Thats it. See the [How to Use](#how-to-use) section for how to use the app.
-
-	sfdx force:org:open -u [[orgAlias]]
+Thats it. See the [How to Use](#tldr-how) section for how to use the app.
 
 # Bit more detail...
 
