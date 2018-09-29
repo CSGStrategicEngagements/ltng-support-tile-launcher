@@ -139,9 +139,9 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GJtQAM](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GJtQAM)
+[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GJyQAM](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GJyQAM)
 
-(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A0000038GJtQAM` <br />
+(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A0000038GJyQAM` <br />
 if you are already logged in)
 
 ![Install for Admins](docs/images/installPackage.png)
@@ -193,14 +193,3 @@ This will then perform any additional setup (such as creating records, etc).
 ##### Run the Demos
 
 Thats it. See the [How to Use](#tldr-how) section for how to use the app.
-
-# Bit more detail...
-
-More_detail_on_how_this_was_done
-
-## Component
-
-What_about_the_component
-
-	sample code
-	

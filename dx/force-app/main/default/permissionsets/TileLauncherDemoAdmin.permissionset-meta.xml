@@ -11,6 +11,21 @@
     <description>Someone that can manage the Tile Launcher</description>
     <fieldPermissions>
         <editable>true</editable>
+        <field>ltng_TileLauncherEntryPreference__c.PreferredSortIndex__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ltng_TileLauncherEntryPreference__c.UniqueId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ltng_TileLauncherEntryPreference__c.User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>ltng_TileLauncherEntry__c.Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -41,6 +56,15 @@
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Tile Launcher Demo Admin</label>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>ltng_TileLauncherEntryPreference__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>

@@ -1,0 +1,82 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "ltng_TileLauncherEntry__c",
+                "referenceId": "ltng_TileLauncherEntry__cRef1"
+            },
+            "Description__c": "Salesforce Accounts",
+            "ExternalId__c": "obj_accounts",
+            "IconGroup__c": "standard",
+            "IconName__c": "account",
+            "Name": "Accounts",
+            "Target__c": "/lightning/o/Account/home",
+            "Type__c": "Object Page"
+        },
+        {
+            "attributes": {
+                "type": "ltng_TileLauncherEntry__c",
+                "referenceId": "ltng_TileLauncherEntry__cRef2"
+            },
+            "Description__c": "Salesforce Opportunities",
+            "ExternalId__c": "obj_opportunities",
+            "IconGroup__c": "standard",
+            "IconName__c": "opportunity",
+            "Name": "Opportunities",
+            "Target__c": "/lightning/o/Opportunity/home",
+            "Type__c": "Object Page"
+        },
+        {
+            "attributes": {
+                "type": "ltng_TileLauncherEntry__c",
+                "referenceId": "ltng_TileLauncherEntry__cRef3"
+            },
+            "Description__c": "External System! Your gateway to payments and commisions.",
+            "ExternalId__c": "sys_externalSystem",
+            "IconGroup__c": "standard",
+            "IconName__c": "omni_supervisor",
+            "Name": "External System",
+            "Target__c": "https://www.google.com",
+            "Type__c": "URL"
+        },
+        {
+            "attributes": {
+                "type": "ltng_TileLauncherEntry__c",
+                "referenceId": "ltng_TileLauncherEntry__cRef4"
+            },
+            "Description__c": "Link only available to Admins",
+            "ExternalId__c": "admin_link",
+            "IconGroup__c": "standard",
+            "IconName__c": "custom",
+            "Name": "Admin Only Link",
+            "Target__c": "/lightning/o/ltng_TileLauncherEntry__c/home",
+            "Type__c": "Object Page"
+        },
+        {
+            "attributes": {
+                "type": "ltng_TileLauncherEntry__c",
+                "referenceId": "ltng_TileLauncherEntry__cRef5"
+            },
+            "Description__c": "Directs you to the home page",
+            "ExternalId__c": "np_home",
+            "IconGroup__c": "standard",
+            "IconName__c": "home",
+            "Name": "Home",
+            "Target__c": "/lightning/page/home",
+            "Type__c": "Named Page"
+        },
+        {
+            "attributes": {
+                "type": "ltng_TileLauncherEntry__c",
+                "referenceId": "ltng_TileLauncherEntry__cRef6"
+            },
+            "Description__c": "Navigates you to a Lightning or VF Page",
+            "ExternalId__c": "nav_TileLauncher",
+            "IconGroup__c": "standard",
+            "IconName__c": "apps",
+            "Name": "Tile Launcher",
+            "Target__c": "/lightning/n/ltng_TileLauncher",
+            "Type__c": "Navigation Item Page"
+        }
+    ]
+}

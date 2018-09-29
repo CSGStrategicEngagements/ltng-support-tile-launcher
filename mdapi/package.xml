@@ -10,6 +10,7 @@
     <members>ltng_TileLauncher</members>
     <members>ltng_TileLauncherDemoSetup</members>
     <members>ltng_TileLauncherDemoSetupItem</members>
+    <members>ltng_TileLauncherDraggableTile</members>
     <members>ltng_TileLauncherEvent</members>
     <members>ltng_TileLauncherTile</members>
   </types>
@@ -46,11 +47,16 @@
   </types>
   <types>
     <name>Layout</name>
+    <members>ltng_TileLauncherEntryPreference__c-Tile Launcher Entry Preference Layout</members>
     <members>ltng_TileLauncherEntry__c-Tile Launcher Entry Layout</members>
     <members>ltng_TileLauncherNavigationFormat__mdt-Tile Launcher Navigation Format Layout</members>
   </types>
   <types>
     <name>CustomField</name>
+    <members>ltng_TileLauncherEntryPreference__c.PreferredSortIndex__c</members>
+    <members>ltng_TileLauncherEntryPreference__c.TileLauncherEntry__c</members>
+    <members>ltng_TileLauncherEntryPreference__c.UniqueId__c</members>
+    <members>ltng_TileLauncherEntryPreference__c.User__c</members>
     <members>ltng_TileLauncherEntry__c.Description__c</members>
     <members>ltng_TileLauncherEntry__c.ExternalId__c</members>
     <members>ltng_TileLauncherEntry__c.IconGroup__c</members>
@@ -66,14 +72,15 @@
     <members>ltng_TileLauncherNavigationFormat__mdt.URL_Format__c</members>
   </types>
   <types>
+    <name>CustomObject</name>
+    <members>ltng_TileLauncherEntryPreference__c</members>
+    <members>ltng_TileLauncherEntry__c</members>
+    <members>ltng_TileLauncherNavigationFormat__mdt</members>
+  </types>
+  <types>
     <name>ListView</name>
     <members>ltng_TileLauncherEntry__c.All</members>
     <members>ltng_TileLauncherNavigationFormat__mdt.All</members>
-  </types>
-  <types>
-    <name>CustomObject</name>
-    <members>ltng_TileLauncherEntry__c</members>
-    <members>ltng_TileLauncherNavigationFormat__mdt</members>
   </types>
   <types>
     <name>PermissionSet</name>
