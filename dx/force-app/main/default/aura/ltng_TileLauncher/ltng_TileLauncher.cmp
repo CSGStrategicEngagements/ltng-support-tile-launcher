@@ -18,6 +18,8 @@
     <aura:attribute name="tiles" type="ltng_TileLauncherEntry__c[]" access="private" />
     <aura:attribute name="launcherFormats" type="Object[]" access="private" />
     <aura:attribute name="editMode" type="Boolean" default="false" access="private" />
+    <aura:attribute name="isSaving" type="Boolean" default="false" access="private" />
+    <aura:attribute name="tilesTouched" type="String[]" default="[]" access="private" />
     <aura:attribute name="setupComplete" type="Boolean" default="false" access="private" />
     <aura:attribute name="supportDragAndDrop" type="Boolean" default="false" access="private" />
     <!-- handlers -->
@@ -76,6 +78,9 @@
                 </aura:iteration>
                 </ul>
             </div>
+            <aura:if isTrue="{!v.isSaving}">
+                <lightning:spinner alternativeText="Loading..." size="large" />
+            </aura:if>
         </div>
     </div>
 </aura:component>

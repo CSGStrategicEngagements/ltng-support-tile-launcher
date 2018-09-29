@@ -8,6 +8,8 @@
 		component.set("v.supportDragAndDrop", supportDragAndDrop);
 
 		component.set('v.editMode', false);
+		component.set('v.isSaving', false);
+		helper.resetTouchedItems(component, helper);
 	},
 
 	/**
@@ -97,6 +99,9 @@
 
 		tiles[sourceTileIndex] = targetTile;
 		tiles[targetTileIndex] = sourceTile;
+
+		helper.markItemAsTouched(component, event, sourceTile);
+		helper.markItemAsTouched(component, event, targetTile);
 
 		component.set('v.tiles', tiles);
 	},
@@ -207,6 +212,9 @@
 		tiles[previousTileIndex] = currentTile;
 		tiles[currentTileIndex] = previousTile;
 
+		helper.markItemAsTouched(component, event, currentTile);
+		helper.markItemAsTouched(component, event, previousTile);
+
 		component.set('v.tiles', tiles);
 	},
 
@@ -216,8 +224,124 @@
 	toggleEditMode : function(component, helper){
 		helper.noop();
 
-		var editMode = component.get('v.editMode');
-		component.set("v.editMode", !editMode);
+		//helper.checkGettingPreferences(component, helper); //-- works
+		//helper.checkSendingPreferences(component, helper); //-- works
+		//helper.storeTilePreferences(component, helper);
+
+		var currentlyEditing = component.get('v.editMode');
+
+		if (currentlyEditing === true) {
+			helper.storeTilePreferences(component, helper);
+		} else {
+			helper.resetTouchedItems(component, helper);
+			component.set("v.editMode", !currentlyEditing);
+		}
+	},
+
+	/**
+	 * Mark a tile as 'touched' (for editing)
+	 * @param component
+	 * @param helper
+	 * @param tileId
+	 */
+	markItemAsTouched : function(component, helper, tile){
+		/*
+		Ultimately it would be preferred that we could set a transient variable
+		onto the tile to indicate it was touched.
+		It is unclear if / when this value would no longer be accessible.
+		**/
+
+		tile.isModified = true;
+	},
+
+	/**
+	 * Resets the list of items touched
+	 */
+	resetTouchedItems : function(component, helper){
+		helper.noop();
+		var allTiles = component.get('v.tiles');
+		for (var i = 0; i < allTiles.length; i = i+1) {
+			allTiles[i].isModified = false;
+		}
+	},
+
+	/**
+	 * Determines the list of tiles that were touched
+	 */
+	serializeTilePreferences : function(component, helper){
+		helper.noop();
+
+		var results = [];
+		//var allModifiedTiles = [];
+		
+		var allTiles = component.get('v.tiles');
+		var tile;
+		var tilePreference;
+
+		for (var i = 0; i < allTiles.length; i = i+1) {
+			tile = allTiles[i];
+
+			//-- for now, serialize all of them
+			//-- as allowing piecemeal saves does not work in all cases
+			//-- @TODO: revisit.
+
+			//if (tile.isModified) {
+				//allModifiedTiles.push(tile);
+
+				tilePreference = {
+					tileLauncherEntryId: tile.Id,
+					preferredSortIndex: i
+				};
+				results.push(tilePreference);
+			//}
+		}
+
+		//-- compare allModifiedTilesA with allModifiedTiles
+		//console.log('allModifiedTiles');console.log(allModifiedTiles);
+
+		return results;
+	},
+
+	/**
+	 * Attempt to save the touched items
+	 **/
+	storeTilePreferences : function(component, helper) {
+		var action = component.get('c.saveTilePreferences');
+
+		//-- get the list of tiles stored
+		var tilePreferences = helper.serializeTilePreferences(component, helper);
+		var preferenceCollection = {records:tilePreferences};
+		var tilePreferencesJSON = JSON.stringify(preferenceCollection);
+
+		action.setParams({ "tilePreferencesJSON": tilePreferencesJSON });
+
+		component.set('v.isSaving', true);
+		
+		action.setCallback(this, function(response){
+			//-- stop the saving spinner regardless, so the user can fix it.
+			component.set('v.isSaving', false);
+
+			var state = response.getState();
+			if( state === 'SUCCESS' ){
+				//console.info('action success');
+
+				var results = response.getReturnValue();
+				console.log('all returned preferences:' + results);
+
+				//-- end the edit mode
+				component.set('v.editMode', false);
+			} else {
+				console.error('Error occurred from Action');
+				
+				//-- https://developer.salesforce.com/blogs/2017/09/error-handling-best-practices-lightning-apex.html
+				var errors = response.getError();
+				console.error(JSON.parse(JSON.stringify(errors)));
+
+				helper.handleCallError(component, helper, state, errors);
+			}
+		});
+		//-- optionally set storable, abortable, background flags here
+		$A.enqueueAction(action);
 	},
 
 	/**
