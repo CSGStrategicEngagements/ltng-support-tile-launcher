@@ -31,23 +31,9 @@
                 </span>
             </div>
             <div class="{! 'slds-app-launcher__tile-body ' + if(v.editMode,'slds-theme_shade slds-theme_alert-texture','') }">
-                <!--
-                <span class="slds-icon_container" title="Drag item to a new location">
-                    <lightning:icon iconName="utility:arrowup" alternativeText="Move Up" size="xx-small" />
-                </span>
-                <span class="slds-icon_container" title="Drag item to a new location">
-                    <lightning:icon iconName="utility:arrowdown" alternativeText="Move Down" size="xx-small" />
-                </span>
-                -->
                 <span class="slds-text-link">{# v.tile.Name }</span>
                 <p title="{# v.tile.Description__c }">{# v.tile.Description__c }</p>
             </div>
-            <!--
-            <div class='actions'>
-                <lightning:buttonIcon variant="border-filled" alternativeText="Up" iconName="utility:chevronup" onclick="{!c.handleMoveUp}" /><br />
-                <lightning:buttonIcon variant="border-filled" alternativeText="Down" iconName="utility:chevrondown" onclick="{!c.handleMoveDown}" />
-            </div>
-            -->
         </a>
     </li>
     </aura:if>
