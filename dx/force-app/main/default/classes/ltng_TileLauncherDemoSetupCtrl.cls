@@ -300,6 +300,17 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Priority__c = 3,
             ResourceName__c = 'ltng_HeroImageExample3'
 		));
+
+		heroRecordsToCreate.add(new ltng_HeroNotification__c(
+            Title__c = 'Example Locked Permission',
+            AlternativeText__c = 'Example Locked Hero Image Alt Text',
+            Description__c = 'Only those with the custom permission assigned on this Hero Notification record can see this',
+            ExternalId__c = 'ex_LockedHero',
+            Name = 'Locked Permission',
+            Priority__c = 100,
+            ResourceName__c = 'ltng_HeroImageExampleLocked',
+            Permission__c = 'ltng_TileLauncherAdmin'
+		));
         
         try {
             insert baseRecords;
