@@ -22,6 +22,11 @@ Or Administrators can easily highlight upcoming activities or events - using a c
 
 ![Demo of Hero Button](docs/images/heroButtonDemo.gif)
 
+All in a way that is intuitive for where your users are.
+
+![Screenshot from Mobile](docs/images/tileLauncherMobile.gif)
+
+
 
 
 # TLDR How
