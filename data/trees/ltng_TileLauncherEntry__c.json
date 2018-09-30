@@ -57,6 +57,19 @@
                 "type": "ltng_TileLauncherEntry__c",
                 "referenceId": "ltng_TileLauncherEntry__cRef5"
             },
+            "Description__c": "List of hero images currently in use",
+            "ExternalId__c": "obj_heroNotifications",
+            "IconGroup__c": "standard",
+            "IconName__c": "announcement",
+            "Name": "Hero Notifications",
+            "Target__c": "/lightning/o/ltng_HeroNotification__c/home",
+            "Type__c": "Object Page"
+        },
+        {
+            "attributes": {
+                "type": "ltng_TileLauncherEntry__c",
+                "referenceId": "ltng_TileLauncherEntry__cRef6"
+            },
             "Description__c": "Directs you to the home page",
             "ExternalId__c": "np_home",
             "IconGroup__c": "standard",
@@ -68,7 +81,7 @@
         {
             "attributes": {
                 "type": "ltng_TileLauncherEntry__c",
-                "referenceId": "ltng_TileLauncherEntry__cRef6"
+                "referenceId": "ltng_TileLauncherEntry__cRef7"
             },
             "Description__c": "Navigates you to a Lightning or VF Page",
             "ExternalId__c": "nav_TileLauncher",

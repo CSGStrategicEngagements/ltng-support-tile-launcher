@@ -238,6 +238,17 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
 		));
 		
 		baseRecords.add(new ltng_TileLauncherEntry__c(
+            Description__c = 'List of hero images currently in use',
+            ExternalId__c = 'obj_heroNotifications',
+            IconGroup__c = 'standard',
+            IconName__c = 'announcement',
+            Name = 'Hero Notifications',
+            Target__c = '/lightning/o/ltng_HeroNotification__c/home',
+            Permission__c = 'ltng_TileLauncherAdmin',
+            Type__c = 'Object Page'
+		));
+		
+		baseRecords.add(new ltng_TileLauncherEntry__c(
             Description__c = 'Directs you to the home page',
             ExternalId__c = 'np_home',
             IconGroup__c = 'standard',
