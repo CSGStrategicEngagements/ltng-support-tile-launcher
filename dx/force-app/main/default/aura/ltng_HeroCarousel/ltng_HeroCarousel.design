@@ -1,0 +1,5 @@
+<design:component>
+	<design:attribute name='autoScroll' label='Allow AutoScroll?' description='Whether to allow the auto scrolling between hero images' default='false' />
+    <design:attribute name='autoScrollDuration' label='AutoScroll Slide Duration' description='#Seconds per slide during AutoScroll' default='5' />
+    <design:attribute name='showDescription' label='Show Description?' description='Whether to show the text area below the hero image' default='true' />
+</design:component>

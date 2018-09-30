@@ -4,6 +4,35 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
+                <name>autoScroll</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>autoScrollDuration</name>
+                <value>5</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>showDescription</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>ltng_HeroCarousel</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>Example Rich Text Area &lt;a href=&quot;https://www.google.com&quot;&gt;with links!&lt;/a&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>ltng_TileLauncher</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
                 <name>description</name>
                 <value>Alt Text for screen readers - /lightning/page/home</value>
             </componentInstanceProperties>
@@ -24,20 +53,6 @@
                 <value>100%</value>
             </componentInstanceProperties>
             <componentName>ltng_HeroButton</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>decorate</name>
-                <value>true</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>richTextValue</name>
-                <value>Example Rich Text Area &lt;a href=&quot;https://www.google.com&quot;&gt;with links!&lt;/a&gt;</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:richText</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentName>ltng_TileLauncher</componentName>
         </componentInstances>
         <name>main</name>
         <type>Region</type>

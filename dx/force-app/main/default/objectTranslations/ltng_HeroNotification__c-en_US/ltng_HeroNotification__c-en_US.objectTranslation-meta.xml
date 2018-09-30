@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Hero Notification</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Hero Notifications</value>
+    </caseValues>
+    <layouts>
+        <layout>Hero Notification Layout</layout>
+        <sections>
+            <label><!-- Availability --></label>
+            <section>Availability</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -11,6 +11,41 @@
     <description>Someone that can manage the Tile Launcher</description>
     <fieldPermissions>
         <editable>true</editable>
+        <field>ltng_HeroNotification__c.AlternativeText__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ltng_HeroNotification__c.Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ltng_HeroNotification__c.EndDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ltng_HeroNotification__c.Permission__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ltng_HeroNotification__c.Priority__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ltng_HeroNotification__c.StartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ltng_HeroNotification__c.Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>ltng_TileLauncherEntryPreference__c.PreferredSortIndex__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -62,6 +97,15 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>ltng_HeroNotification__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>ltng_TileLauncherEntryPreference__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
@@ -74,6 +118,10 @@
         <object>ltng_TileLauncherEntry__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <tabSettings>
+        <tab>ltng_HeroNotification__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
     <tabSettings>
         <tab>ltng_TileLauncher</tab>
         <visibility>Visible</visibility>

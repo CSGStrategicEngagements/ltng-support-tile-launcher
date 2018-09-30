@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The Custom Permission API name that allows the person to see this image.
+(or null if everyone should) --></help>
+    <label><!-- Permission --></label>
+    <name>Permission__c</name>
+</CustomFieldTranslation>

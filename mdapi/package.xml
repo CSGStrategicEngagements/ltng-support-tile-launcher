@@ -7,6 +7,7 @@
   <types>
     <name>AuraDefinitionBundle</name>
     <members>ltng_HeroButton</members>
+    <members>ltng_HeroCarousel</members>
     <members>ltng_TileLauncher</members>
     <members>ltng_TileLauncherDemoSetup</members>
     <members>ltng_TileLauncherDemoSetupItem</members>
@@ -17,6 +18,7 @@
   <types>
     <name>ApexClass</name>
     <members>ltng_HeroButtonCtrl</members>
+    <members>ltng_HeroCarouselCtrl</members>
     <members>ltng_TileLauncherCtrl</members>
     <members>ltng_TileLauncherDemoSetupCtrl</members>
   </types>
@@ -47,12 +49,26 @@
   </types>
   <types>
     <name>Layout</name>
+    <members>ltng_HeroNotification__c-Hero Notification Layout</members>
     <members>ltng_TileLauncherEntryPreference__c-Tile Launcher Entry Preference Layout</members>
     <members>ltng_TileLauncherEntry__c-Tile Launcher Entry Layout</members>
     <members>ltng_TileLauncherNavigationFormat__mdt-Tile Launcher Navigation Format Layout</members>
   </types>
   <types>
+    <name>CustomObjectTranslation</name>
+    <members>ltng_HeroNotification__c-en_US</members>
+  </types>
+  <types>
     <name>CustomField</name>
+    <members>ltng_HeroNotification__c.AlternativeText__c</members>
+    <members>ltng_HeroNotification__c.Description__c</members>
+    <members>ltng_HeroNotification__c.EndDate__c</members>
+    <members>ltng_HeroNotification__c.ExternalId__c</members>
+    <members>ltng_HeroNotification__c.Permission__c</members>
+    <members>ltng_HeroNotification__c.Priority__c</members>
+    <members>ltng_HeroNotification__c.ResourceName__c</members>
+    <members>ltng_HeroNotification__c.StartDate__c</members>
+    <members>ltng_HeroNotification__c.Title__c</members>
     <members>ltng_TileLauncherEntryPreference__c.PreferredSortIndex__c</members>
     <members>ltng_TileLauncherEntryPreference__c.TileLauncherEntry__c</members>
     <members>ltng_TileLauncherEntryPreference__c.UniqueId__c</members>
@@ -72,15 +88,17 @@
     <members>ltng_TileLauncherNavigationFormat__mdt.URL_Format__c</members>
   </types>
   <types>
+    <name>ListView</name>
+    <members>ltng_HeroNotification__c.All</members>
+    <members>ltng_TileLauncherEntry__c.All</members>
+    <members>ltng_TileLauncherNavigationFormat__mdt.All</members>
+  </types>
+  <types>
     <name>CustomObject</name>
+    <members>ltng_HeroNotification__c</members>
     <members>ltng_TileLauncherEntryPreference__c</members>
     <members>ltng_TileLauncherEntry__c</members>
     <members>ltng_TileLauncherNavigationFormat__mdt</members>
-  </types>
-  <types>
-    <name>ListView</name>
-    <members>ltng_TileLauncherEntry__c.All</members>
-    <members>ltng_TileLauncherNavigationFormat__mdt.All</members>
   </types>
   <types>
     <name>PermissionSet</name>
@@ -89,11 +107,15 @@
   </types>
   <types>
     <name>StaticResource</name>
+    <members>ltng_HeroImageExample1</members>
+    <members>ltng_HeroImageExample2</members>
+    <members>ltng_HeroImageExample3</members>
     <members>ltng_TileLauncherHero</members>
     <members>ltng_TileLauncherHero2</members>
   </types>
   <types>
     <name>CustomTab</name>
+    <members>ltng_HeroNotification__c</members>
     <members>ltng_TileLauncher</members>
     <members>ltng_TileLauncherDemoSetup</members>
     <members>ltng_TileLauncherEntry__c</members>

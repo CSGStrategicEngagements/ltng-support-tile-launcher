@@ -101,6 +101,14 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             ];
             
             delete recordsToDelete;
+            
+            
+            recordsToDelete = [
+                SELECT Id
+                FROM ltng_HeroNotification__c
+            ];
+            
+            delete recordsToDelete;
         } catch(Exception err){
             step.errMsg = 'Error occurred while attempting to delete all base records';
             step.devErrMsg = err.getMessage();
@@ -249,9 +257,42 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Target__c = '/lightning/n/ltng_TileLauncher',
             Type__c = 'Navigation Item Page'
 		));
+		
+		ltng_HeroNotification__c[] heroRecordsToCreate = new ltng_HeroNotification__c[]{};
+		
+		heroRecordsToCreate.add(new ltng_HeroNotification__c(
+            Title__c = 'Hero 1',
+            AlternativeText__c = 'Hero 1 Alt Text',
+            Description__c = 'Description of Hero 1',
+            ExternalId__c = 'ex_Hero1',
+            Name = 'Example Hero 1',
+            Priority__c = 1,
+            ResourceName__c = 'ltng_HeroImageExample1'
+		));
+		
+		heroRecordsToCreate.add(new ltng_HeroNotification__c(
+            Title__c = 'Hero 2',
+            AlternativeText__c = 'Hero 2 Alt Text',
+            Description__c = 'Description of Hero 2',
+            ExternalId__c = 'ex_Hero2',
+            Name = 'Example Hero 2',
+            Priority__c = 2,
+            ResourceName__c = 'ltng_HeroImageExample2'
+		));
+		
+		heroRecordsToCreate.add(new ltng_HeroNotification__c(
+            Title__c = 'Hero 3',
+            AlternativeText__c = 'Hero 3 Alt Text',
+            Description__c = 'Description of Hero 3',
+            ExternalId__c = 'ex_Hero3',
+            Name = 'Example Hero 3',
+            Priority__c = 3,
+            ResourceName__c = 'ltng_HeroImageExample3'
+		));
         
         try {
             insert baseRecords;
+            insert heroRecordsToCreate;
         } catch( Exception err){
             step.errMsg = 'error occurred while creating base records';
             step.devErrMsg = err.getMessage();

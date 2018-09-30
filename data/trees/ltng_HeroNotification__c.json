@@ -1,0 +1,31 @@
+{
+    "records": [
+        {
+            "Title__c": "Hero 2",
+            "AlternativeText__c": "Hero 2 Alt Text",
+            "Description__c": "Description of Hero 2",
+            "ExternalId__c": "ex_Hero2",
+            "Name": "Example Hero 2",
+            "Priority__c": 2,
+            "ResourceName__c": "ltng_HeroImageExample2"
+        },
+        {
+            "Title__c": "Hero 1",
+            "AlternativeText__c": "Hero 1 Alt Text",
+            "Description__c": "Description of Hero 1",
+            "ExternalId__c": "ex_Hero1",
+            "Name": "Example Hero 1",
+            "Priority__c": 1,
+            "ResourceName__c": "ltng_HeroImageExample1"
+        },
+        {
+            "Title__c": "Hero 3",
+            "AlternativeText__c": "Hero 3 Alt Text",
+            "Description__c": "Description of Hero 3",
+            "ExternalId__c": "ex_Hero3",
+            "Name": "Example Hero 3",
+            "Priority__c": 3,
+            "ResourceName__c": "ltng_HeroImageExample3"
+        }
+    ]
+}

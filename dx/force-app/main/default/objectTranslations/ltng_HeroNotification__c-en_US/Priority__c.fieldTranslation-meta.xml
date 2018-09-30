@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Items with higher priority are shown first in the set
+(lower or blank are shown last) --></help>
+    <label><!-- Priority --></label>
+    <name>Priority__c</name>
+</CustomFieldTranslation>

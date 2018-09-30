@@ -1,0 +1,56 @@
+<!--
+/**
+* Represents a very big visual carousel for Hero images
+* @component: ltng_HeroCarousel
+**/
+-->
+<aura:component
+    controller="ltng_HeroButtonCtrl"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"
+    access="global"
+>
+    <!-- attributes -->
+    <aura:attribute name="autoScroll" type="Boolean" default="true" access="global" />
+    <aura:attribute name="autoScrollDuration" type="Integer" default="5" access="global" />
+    <aura:attribute name="showDescription" type="Boolean" default="true" access="global" />
+    <!-- private attributes -->
+    <aura:attribute name="heroNotifications" type="ltng_HeroNotification__c[]" default="" access="private" />
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- events -->
+    <!-- elements -->
+    <lightning:carousel
+        class="{! if(v.showDescription,'','banner-only')}"
+        scrollDuration="{!v.autoScrollDuration}"
+        disableAutoScroll="{!!v.autoScroll}"
+    >
+        <aura:iteration items="{!v.heroNotifications}" var="heroNotification">
+        <lightning:carouselImage
+            src = "{! heroNotification.ResourceAddress }"
+            header = "{! heroNotification.Title }"
+            description = "{! heroNotification.Description }"
+            alternativeText = "{! heroNotification.AlternativeText }">
+        </lightning:carouselImage>
+        </aura:iteration>
+        <!--
+        <lightning:carouselImage
+            src = "{! $Resource.ltng_TileLauncherHero}"
+            header = "First card"
+            description = "First card description"
+            alternativeText = "This is a card">
+        </lightning:carouselImage>
+        <lightning:carouselImage
+            src = "{! $Resource.ltng_TileLauncherHero2}"
+            header = "Second card"
+            description = "Second card description"
+            alternativeText = "This is a card">
+        </lightning:carouselImage>
+        <lightning:carouselImage
+            src = "{! $Resource.ltng_TileLauncherHero2}"
+            header = "Third card"
+            description = "Third card description"
+            alternativeText = "This is a card">
+        </lightning:carouselImage>
+        -->
+    </lightning:carousel>
+</aura:component>

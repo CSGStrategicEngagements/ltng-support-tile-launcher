@@ -27,12 +27,6 @@
     -->
     <aura:if isTrue="{!v.matchesSearch}">
     <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
-        <!--
-            ondrag="{!c.handleOnDrag}"
-            ondragenter="{!c.handleOnDragEnter}"
-            ondragexit="{!c.handleOnDragExit}"
-            ondragleave="{!c.handleOnDragLeave}"
-        -->
         <a aria-describedby="drag-instructions" draggable="{!v.editMode}"
             id="{! 'button_' + v.editMode }"
             ondragstart="{!c.handleOnDragStart}"
@@ -57,7 +51,7 @@
             </div>
             <div class="{! 'slds-app-launcher__tile-body ' + if(v.editMode,'slds-theme_shade slds-theme_alert-texture','') }">
                 <span class="slds-text-link">{# v.tile.Name }</span>
-                <p title="{# v.tile.Description__c }">{!v.editMode} - {# v.tile.Description__c }</p>
+                <p title="{# v.tile.Description__c }">{# v.tile.Description__c }</p>
             </div>
         </a>
     </li>
