@@ -8,6 +8,9 @@ public class ltng_HeroButtonCtrl {
 
 	/** format of a static resource url **/
 	public static final String STATIC_RESOURCE_URL_FORMAT = '/resource/{0}/{1}';
+
+	/** format to split the custom permissions **/
+	public static final String DELIMITER_PATTERN = ',';
 	
 	/**
 	 * Determines the URL for a given static resource.
@@ -48,7 +51,7 @@ public class ltng_HeroButtonCtrl {
     public static HeroNotification[] getHeroNotifications(Id userId) {
         HeroNotification[] results;
 		HeroNotification notificationResult;
-		ltng_HeroNotification__c[] eligibleNotifications;
+		ltng_HeroNotification__c[] currentNotifications = new ltng_HeroNotification__c[]{};
         Map<String,ltng_HeroNotification__c[]> notificationByResource = new Map<String,ltng_HeroNotification__c[]>();
 		Map<String,String> resourceUrlByName = new Map<String,String>();
         Set<String> allResourceApiNames;
@@ -58,20 +61,24 @@ public class ltng_HeroButtonCtrl {
             //-- determine the current list of Hero Notifications
             DateTime now = System.now();
 
-            eligibleNotifications = [
+			for (ltng_HeroNotification__c eligibleNotification : [
                 SELECT Title__c, AlternativeText__c, Description__c, EndDate__c, ExternalId__c, Id, Name, Permission__c, Priority__c, ResourceName__c, StartDate__c
                 FROM ltng_HeroNotification__c
                 WHERE (StartDate__c = null or StartDate__c <= :now) and (EndDate__c = null or EndDate__c >= :now)
                 ORDER BY Priority__c desc nulls last
-            ];
-
-			//-- @TODO: filter by permission
+            ]){
+				if ( String.isBlank(eligibleNotification.Permission__c) ){
+					currentNotifications.add(eligibleNotification);
+				} else if (hasAnyCustomPermission(eligibleNotification.Permission__c)){
+					currentNotifications.add(eligibleNotification);
+				}
+			}
 
             //-- @INVARIANT - we have a list of all the notifications we should consider.
-            //System.debug('all eligible notifications'); System.debug(eligibleNotifications);
+            //System.debug('all eligible notifications'); System.debug(currentNotifications);
 
             //-- determine the notifications resources
-            for ( ltng_HeroNotification__c notification : eligibleNotifications ){
+            for ( ltng_HeroNotification__c notification : currentNotifications ){
                 if (!notificationByResource.containsKey(notification.ResourceName__c)){
                     notificationByResource.put(notification.ResourceName__c, new ltng_HeroNotification__c[]{});
                 }
@@ -90,7 +97,7 @@ public class ltng_HeroButtonCtrl {
 			//System.debug('resourceUrls by resource name'); System.debug(resourceUrlByName);
 
 			results = new HeroNotification[]{};
-			for ( ltng_HeroNotification__c notification2 : eligibleNotifications ){
+			for ( ltng_HeroNotification__c notification2 : currentNotifications ){
 				notificationResult = new HeroNotification(notification2);
 				notificationResult.ResourceAddress = resourceUrlByName.get(notification2.ResourceName__c);
 				results.add(notificationResult);
@@ -169,5 +176,42 @@ public class ltng_HeroButtonCtrl {
 		}
 
 		return resourceUrlByName;
+	}
+
+	/**
+	 * Determines if a user has access to a custom permission
+	 * @param customPermissionName (String)
+	 * @return Boolean
+	 **/
+	public static Boolean hasCustomPermission(String customPermissionName){
+		if(String.isBlank(customPermissionName)){
+			return(false);
+		} else {
+			customPermissionName = customPermissionName.trim();
+		}
+		return FeatureManagement.checkpermission(customPermissionName);
+	}
+
+	/**
+	 * Determines if a user has access to custom permissions in a comma delimited list
+	 * @param customPermissionsList (String) - comma separated list of custom permissions (ex: 'cPermission, cPermission2')
+	 * @return Boolean - (true) if the user has access to any of the custom permissions list
+	 **/
+	public static Boolean hasAnyCustomPermission(String customPermissionsList){
+		String[] customPermissions;
+		
+		if (customPermissionsList == null){
+			return(false);
+		}
+
+		customPermissions = customPermissionsList.split(DELIMITER_PATTERN);
+		for (String customPermission : customPermissions) {
+			//-- succeed on one match
+			if (hasCustomPermission(customPermission)){
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

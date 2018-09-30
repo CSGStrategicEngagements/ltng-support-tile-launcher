@@ -18,7 +18,6 @@
   <types>
     <name>ApexClass</name>
     <members>ltng_HeroButtonCtrl</members>
-    <members>ltng_HeroCarouselCtrl</members>
     <members>ltng_TileLauncherCtrl</members>
     <members>ltng_TileLauncherDemoSetupCtrl</members>
   </types>
@@ -110,6 +109,7 @@
     <members>ltng_HeroImageExample1</members>
     <members>ltng_HeroImageExample2</members>
     <members>ltng_HeroImageExample3</members>
+    <members>ltng_HeroImageExampleLocked</members>
     <members>ltng_TileLauncherHero</members>
     <members>ltng_TileLauncherHero2</members>
   </types>

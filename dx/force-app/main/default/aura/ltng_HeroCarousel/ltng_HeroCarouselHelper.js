@@ -4,16 +4,16 @@
 		 **/
 		getHeroNotifications : function(component, helper) {
 				var action = component.get('c.getMyHeroNotifications');
-				//action.setParams({ recordId: recordId });
+				action.setStorable();
 				
 				action.setCallback(this, function(response){
 						var state = response.getState();
 						if( state === 'SUCCESS' ){
-								console.info('action success');
+								//console.info('action success');
 								var results = response.getReturnValue();
 								component.set('v.heroNotifications', results);
 						} else {
-								console.error('Error occurred from Action');
+								//console.error('Error occurred from Action');
 								
 								//-- https://developer.salesforce.com/blogs/2017/09/error-handling-best-practices-lightning-apex.html
 								var errors = response.getError();

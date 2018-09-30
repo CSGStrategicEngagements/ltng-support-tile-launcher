@@ -19,6 +19,7 @@
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <!-- events -->
     <!-- elements -->
+    <aura:if isTrue="{!not(empty(v.heroNotifications))}">
     <lightning:carousel
         class="{! if(v.showDescription,'','banner-only')}"
         scrollDuration="{!v.autoScrollDuration}"
@@ -32,25 +33,6 @@
             alternativeText = "{! heroNotification.AlternativeText }">
         </lightning:carouselImage>
         </aura:iteration>
-        <!--
-        <lightning:carouselImage
-            src = "{! $Resource.ltng_TileLauncherHero}"
-            header = "First card"
-            description = "First card description"
-            alternativeText = "This is a card">
-        </lightning:carouselImage>
-        <lightning:carouselImage
-            src = "{! $Resource.ltng_TileLauncherHero2}"
-            header = "Second card"
-            description = "Second card description"
-            alternativeText = "This is a card">
-        </lightning:carouselImage>
-        <lightning:carouselImage
-            src = "{! $Resource.ltng_TileLauncherHero2}"
-            header = "Third card"
-            description = "Third card description"
-            alternativeText = "This is a card">
-        </lightning:carouselImage>
-        -->
     </lightning:carousel>
+    </aura:if>
 </aura:component>

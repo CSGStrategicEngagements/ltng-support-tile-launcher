@@ -26,6 +26,7 @@
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <!-- events -->
     <!-- elements -->
+    <aura:if isTrue="{!not(empty(v.resourceAddress))}">
     <div id='hero-image' style='text-align: center;'>
         <a onclick='{!c.handleClick}' >
             <!--
@@ -44,4 +45,5 @@
             />
         </a>
     </div>
+    </aura:if>
 </aura:component>

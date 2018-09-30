@@ -238,6 +238,17 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
 		));
 		
 		baseRecords.add(new ltng_TileLauncherEntry__c(
+            Description__c = 'List of hero images currently in use',
+            ExternalId__c = 'obj_heroNotifications',
+            IconGroup__c = 'standard',
+            IconName__c = 'announcement',
+            Name = 'Hero Notifications',
+            Target__c = '/lightning/o/ltng_HeroNotification__c/home',
+            Permission__c = 'ltng_TileLauncherAdmin',
+            Type__c = 'Object Page'
+		));
+		
+		baseRecords.add(new ltng_TileLauncherEntry__c(
             Description__c = 'Directs you to the home page',
             ExternalId__c = 'np_home',
             IconGroup__c = 'standard',
@@ -288,6 +299,17 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Name = 'Example Hero 3',
             Priority__c = 3,
             ResourceName__c = 'ltng_HeroImageExample3'
+		));
+
+		heroRecordsToCreate.add(new ltng_HeroNotification__c(
+            Title__c = 'Example Locked Permission',
+            AlternativeText__c = 'Example Locked Hero Image Alt Text',
+            Description__c = 'Only those with the custom permission assigned on this Hero Notification record can see this',
+            ExternalId__c = 'ex_LockedHero',
+            Name = 'Locked Permission',
+            Priority__c = 100,
+            ResourceName__c = 'ltng_HeroImageExampleLocked',
+            Permission__c = 'ltng_TileLauncherAdmin'
 		));
         
         try {
