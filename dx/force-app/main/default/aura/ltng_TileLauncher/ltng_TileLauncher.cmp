@@ -64,7 +64,7 @@
                 </div>
             </div>
             </div>
-            <div class='slds-card__body slds-m-around_medium'>
+            <div class='tile-launcher-grid slds-card__body slds-m-around_medium'>
                 <div class="slds-assistive-text" id="drag-live-region" aria-live="assertive"></div>
                 <div class="slds-assistive-text" id="drag-instructions">Press space bar to move this app within the list.</div>
                 <ul class='slds-grid slds-grid--pull-padded slds-wrap'>
