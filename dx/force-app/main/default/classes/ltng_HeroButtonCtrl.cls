@@ -62,7 +62,8 @@ public class ltng_HeroButtonCtrl {
             DateTime now = System.now();
 
 			for (ltng_HeroNotification__c eligibleNotification : [
-                SELECT Title__c, AlternativeText__c, Description__c, EndDate__c, ExternalId__c, Id, Name, Permission__c, Priority__c, ResourceName__c, StartDate__c
+                SELECT Title__c, AlternativeText__c, Description__c, EndDate__c, ExternalId__c, Id, Name, Permission__c, Priority__c, ResourceName__c, StartDate__c,
+					Target__c, Type__c
                 FROM ltng_HeroNotification__c
                 WHERE (StartDate__c = null or StartDate__c <= :now) and (EndDate__c = null or EndDate__c >= :now)
                 ORDER BY Priority__c desc nulls last
@@ -126,10 +127,14 @@ public class ltng_HeroButtonCtrl {
 		@AuraEnabled
 		public String ResourceAddress;
 
+		@AuraEnabled
+		public String Target;
+
 		public HeroNotification(ltng_HeroNotification__c notification){
 			this.Title = notification.Title__c;
 			this.Description = notification.Description__c;
 			this.AlternativeText = notification.AlternativeText__c;
+			this.Target = notification.Target__c;
 		}
 	}
 

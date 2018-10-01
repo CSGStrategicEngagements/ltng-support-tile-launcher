@@ -278,7 +278,9 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             ExternalId__c = 'ex_Hero1',
             Name = 'Example Hero 1',
             Priority__c = 1,
-            ResourceName__c = 'ltng_HeroImageExample1'
+            ResourceName__c = 'ltng_HeroImageExample1',
+            Target__c = 'https://www.salesforce.com',
+            Type__c = 'URL'
 		));
 		
 		heroRecordsToCreate.add(new ltng_HeroNotification__c(
@@ -288,7 +290,9 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             ExternalId__c = 'ex_Hero2',
             Name = 'Example Hero 2',
             Priority__c = 2,
-            ResourceName__c = 'ltng_HeroImageExample2'
+            ResourceName__c = 'ltng_HeroImageExample2',
+            Target__c = 'https://www.salesforce.com',
+            Type__c = 'URL'
 		));
 		
 		heroRecordsToCreate.add(new ltng_HeroNotification__c(
@@ -298,7 +302,9 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             ExternalId__c = 'ex_Hero3',
             Name = 'Example Hero 3',
             Priority__c = 3,
-            ResourceName__c = 'ltng_HeroImageExample3'
+            ResourceName__c = 'ltng_HeroImageExample3',
+            Target__c = 'https://www.salesforce.com',
+            Type__c = 'URL'
 		));
 
 		heroRecordsToCreate.add(new ltng_HeroNotification__c(
@@ -309,7 +315,9 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Name = 'Locked Permission',
             Priority__c = 100,
             ResourceName__c = 'ltng_HeroImageExampleLocked',
-            Permission__c = 'ltng_TileLauncherAdmin'
+            Permission__c = 'ltng_TileLauncherAdmin',
+            Target__c = 'https://www.salesforce.com',
+            Type__c = 'URL'
 		));
         
         try {

@@ -1,2 +1,2 @@
-select Title__c, AlternativeText__c, Description__c, EndDate__c, ExternalId__c, Id, Name, Permission__c, Priority__c, ResourceName__c, StartDate__c from ltng_HeroNotification__c
+select Title__c, Target__c, Type__c, AlternativeText__c, Description__c, EndDate__c, ExternalId__c, Id, Name, Permission__c, Priority__c, ResourceName__c, StartDate__c from ltng_HeroNotification__c
 

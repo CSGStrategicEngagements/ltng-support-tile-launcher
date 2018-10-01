@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <description>Please note that the Visualforce page can include URL Parameters.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Whether the target is a Record Id, Visualforce page, URL, etc.</inlineHelpText>
+    <label>Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>URL</fullName>
+                <default>true</default>
+                <label>URL</label>
+            </value>
+            <value>
+                <fullName>Knowledge Article</fullName>
+                <default>false</default>
+                <label>Knowledge Article</label>
+            </value>
+            <value>
+                <fullName>Named Page</fullName>
+                <default>false</default>
+                <label>Named Page</label>
+            </value>
+            <value>
+                <fullName>Navigation Item Page</fullName>
+                <default>false</default>
+                <label>Navigation Item Page</label>
+            </value>
+            <value>
+                <fullName>Object Page</fullName>
+                <default>false</default>
+                <label>Object Page</label>
+            </value>
+            <value>
+                <fullName>Record Page</fullName>
+                <default>false</default>
+                <label>Record Page</label>
+            </value>
+            <value>
+                <fullName>Record Relationship</fullName>
+                <default>false</default>
+                <label>Record Relationship</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

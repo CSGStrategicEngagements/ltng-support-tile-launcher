@@ -6,6 +6,8 @@
                 "referenceId": "ltng_HeroNotification__cRef1"
             },
             "Title__c": "Hero 1",
+            "Target__c": "https://www.salesforce.com",
+            "Type__c": "URL",
             "AlternativeText__c": "Hero 1 Alt Text",
             "Description__c": "Description of Hero 1",
             "ExternalId__c": "ex_Hero1",
@@ -19,6 +21,8 @@
                 "referenceId": "ltng_HeroNotification__cRef2"
             },
             "Title__c": "Hero 2",
+            "Target__c": "https://www.salesforce.com",
+            "Type__c": "URL",
             "AlternativeText__c": "Hero 2 Alt Text",
             "Description__c": "Description of Hero 2",
             "ExternalId__c": "ex_Hero2",
@@ -32,6 +36,8 @@
                 "referenceId": "ltng_HeroNotification__cRef3"
             },
             "Title__c": "Hero 3",
+            "Target__c": "https://www.salesforce.com",
+            "Type__c": "URL",
             "AlternativeText__c": "Hero 3 Alt Text",
             "Description__c": "Description of Hero 3",
             "ExternalId__c": "ex_Hero3",
@@ -45,9 +51,12 @@
                 "referenceId": "ltng_HeroNotification__cRef4"
             },
             "Title__c": "Example Locked Permission",
+            "Target__c": "https://www.salesforce.com",
+            "Type__c": "URL",
+            "AlternativeText__c": "Example Locked Hero Image Alt Text",
             "Description__c": "Only those with the custom permission assigned on this Hero Notification record can see this",
-            "ExternalId__c": "HeroImageLocked",
-            "Name": "Example Locked Hero",
+            "ExternalId__c": "ex_LockedHero",
+            "Name": "Locked Permission",
             "Permission__c": "ltng_TileLauncherAdmin",
             "Priority__c": 100,
             "ResourceName__c": "ltng_HeroImageExampleLocked"

@@ -28,6 +28,7 @@
         <aura:iteration items="{!v.heroNotifications}" var="heroNotification">
         <lightning:carouselImage
             src = "{! heroNotification.ResourceAddress }"
+            href = "{! heroNotification.Target }"
             header = "{! heroNotification.Title }"
             description = "{! heroNotification.Description }"
             alternativeText = "{! heroNotification.AlternativeText }">

@@ -3,10 +3,11 @@
     <fullName>Target__c</fullName>
     <description>Can be URL Schemes, partial urls, etc.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Target address to direct the user to when clicking the tile.</inlineHelpText>
+    <inlineHelpText>Target URL to navigate the user to.</inlineHelpText>
     <label>Target</label>
     <length>255</length>
-    <required>false</required>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>
     <unique>false</unique>
