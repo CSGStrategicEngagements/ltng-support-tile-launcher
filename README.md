@@ -103,7 +103,227 @@ Or from Mobile:
 
 ![Example Tile](docs/images/ExampleTile.png)
 
-### Types of Targets
+## Hero Button
+
+A Hero Image (often known as a banner) provides a simple way to convey a message to an audience, and a call-to-action as it navigates them where they can learn more.
+
+![Screenshot of the Hero Button](docs/images/HeroButtonImage.png)
+
+### To configure:
+
+Simply drag and drop the Hero Button within the App Builder to use.
+(The App Builder is found under Setup)
+
+It will be available to users that see that page.
+
+![Configure in App Builder](docs/images/heroButtonInAppBuilder.jpg)
+
+(To use your own banner images, please see the [Static Resource Hero Images section](#static-resource-banner-images) below)
+
+<table>
+	<tr>
+		<th>What to enter</th><th>Description</th><th>Example</th>
+	</tr>
+	<tr>
+		<td>Resource Name</td>
+		<td>API Name of the image Static Resource to show. <a href='#static-resource-banner-images'>See Below</a> for uploading your own banner images.</td>
+		<td>MyExampleHeroImage</td>
+	</tr>
+	<tr>
+		<td>Target Address</td>
+		<td>URL Address to direct users when they click the Hero Image</td>
+		<td>https://www.salesforce.com</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>Alt Text to show for screen readers on the Hero Image.</td>
+		<td>Earn more while on the go. Click here for more.</td>
+	</tr>
+	<tr>
+		<td>Width</td>
+		<td>CSS width of the image (either in pixels or percentage)</td>
+		<td>100px OR 100% OR Auto</td>
+	</tr>
+	<tr>
+		<td>Height</td>
+		<td>CSS height of the image (either in pixels or percentage)</td>
+		<td>100px OR 100% OR Auto</td>
+	</tr>
+</table>
+
+## Hero Carousel
+
+The Hero Carousel is an extended version of the Hero Button - to allow for a series of Calls-to-Action (instead of a single one).
+
+![Screenshot of the Hero Carousel](docs/images/HeroCarouselImage.png)
+
+### To see current Hero Notifications
+
+The list of Hero Notification records are available by default within the Tile Launcher component, but can also be found by searching 'Hero Notifications' in the Lightning App Launcher (dice in the top left)
+
+![Screenshot of Hero Notifications Tile](docs/images/HeroCarouselQuicklink.png)
+
+This list of custom objects let you define which Hero Notifications that users will see, and when.
+
+![Screenshot of Hero Notifications List](docs/images/HeroNotificationList.png)
+
+### To Create a new Hero Notification
+
+Simply click the edit or new button to create a new record.
+
+<table>
+	<tr>
+		<th>What to enter</th><th>Description</th><th>Example</th>
+	</tr>
+	<tr>
+		<td>Hero Notification Name</td>
+		<td>Internal name for this record</td>
+		<td>Example Hero 1</td>
+	</tr>
+	<tr>
+		<td>External Id</td>
+		<td><a href='https://help.salesforce.com/HTViewSolution?id=000002783'>External Ids</a> allow for simple data loading. Through Data Loader, or other tools</td>
+		<td>ex_Hero1</td>
+	</tr>
+	<tr>
+		<td>Resource Name</td>
+		<td>API Name of the image Static Resource to show. <a href='#static-resource-banner-images'>See Below</a> for uploading your own banner images.</td>
+		<td>MyExampleHeroImage</td>
+	</tr>
+	<tr>
+		<td>Priority</td>
+		<td>Images are shown based on decreasing priority.</td>
+		<td>10</td>
+	</tr>
+	<tr>
+		<td>Title</td>
+		<td>If description is shown: the tile of the card</td>
+		<td>Earn more commissions on the go</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>If description is shown: the body of the card.</td>
+		<td>Now you can earn more commissions with the Salesforce mobile app. Click here to learn more...</td>
+	</tr>
+	<tr>
+		<td>Alternative Text</td>
+		<td>Alternative text for the image - used with screen readers.</td>
+		<td>Alt text for the hero image...</td>
+	</tr>
+	<tr>
+		<td>URL</td>
+		<td>Where to navigate the user when the click this hero image.</td>
+		<td>https://www.salesforce.com</td>
+	</tr>
+	<tr>
+		<td>Type</td>
+		<td>The type of target we reference. <a href='#types-of-targets'>More below</a></td>
+		<td>URL or Named Page</td>
+	</tr>
+	<tr>
+		<td>Start Date</td>
+		<td>Heros will only be shown after the start date (or immediately if no start date provided)</td>
+		<td>1/1/2020 7:00 am</td>
+	</tr>
+	<tr>
+		<td>End Date</td>
+		<td>Heros will only be shown until the end date (or always shown if no end date provided).</td>
+		<td>1/1/2024 7:00 am</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>division1, division2, division4</td>
+	</tr>
+</table>
+
+Note that the Hero Notification records have a unique External Id - intended to simplify data loading. 
+
+### To Configure the component
+
+Simply drag and drop the Hero Button within the App Builder to use.
+(The App Builder is found under Setup)
+
+It will be available to users that see that page.
+
+![Screenshot of configure screen](docs/images/HeroCarouselConfigure.png)
+
+(To use your own banner images, please see the [Static Resource Hero Images section](#static-resource-banner-images) below)
+
+<table>
+	<tr>
+		<th>What to enter</th><th>Description</th><th>Example</th>
+	</tr>
+	<tr>
+		<td>Allow AutoScroll</td>
+		<td>Automatically switch between hero images (if there are multiple)</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>AutoScroll Slide Duration</td>
+		<td>If AutoScroll enabled: # Seconds that each image is shown</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>Show Description</td>
+		<td>Whether to show the text area underneath the image (true) or not (false)</td>
+		<td>false</td>
+	</tr>
+</table>
+
+## Static Resource Banner Images
+
+[Static Resources](https://trailhead.salesforce.com/en/modules/visualforce_fundamentals/units/visualforce_static_resources) are a place to provide images in a way accessible to logic.
+
+We use static resources to store/reference the images used in the Hero Images / Banners, so they can be leveraged within the Hero Button and Hero Carousel components.
+
+### To see a list of Static Resources
+
+To see a list of current Static Resource, search for 'Static Resource' in the Setup quickfinder.
+
+![Screenshot of Static Resource list](docs/images/staticResourceList.png)
+
+Clicking on the Name (or API Name in this case) of the Static Resource will show the Static Resource Detail.
+
+(This includes the API Name and a link to preview the file and size.  It also includes whom created the Static Resource, and any description)
+
+![Screenshot of Static Resource Detail](docs/images/staticResourceDetail.png)
+
+### To Create a new Static Resource Banner Image
+
+Click the 'New' button on the Static Resource list.
+
+<table>
+	<tr>
+		<th>What to enter</th><th>Description</th><th>Example</th>
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td>API Name of the image Static Resource to show. (Must be letters, numbers or underscores)</td>
+		<td>MyExampleHeroImage</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>Description of the resource (only available through API)</td>
+		<td>Description of my Resource.</td>
+	</tr>
+	<tr>
+		<td>File</td>
+		<td>A file uploader to provide the image.</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Cache Control</td>
+		<td><a href='https://help.salesforce.com/articleView?id=pages_static_resources_create.htm&type=5'>Cache Control</a> indicates if the resource can be shared across users (Public) or per user (Private).</td>
+		<td>Public</td>
+	</tr>
+</table>
+
+Once the resource has been created, just copy the Name (or the API Name) - as this indicates the resource we will use.
+
+
+
+## Types of Targets
 
 * URL - any external system - uses [NavigateToURL](https://developer.salesforce.com/docs/component-library/bundle/force:navigateToURL/documentation)
 * Knowledge Article - reference a knowledge article
@@ -117,14 +337,38 @@ All except URL use the Lightning:Navigation component to navigate to different a
 
 Although the Type isn't as important yet (it finds the first match based on Priority of the Custom Metadata records), it is important to align as best as possible for the day that it is necessary.
 
-## Hero Button
 
-Simply drag and drop the Hero Button within the App Builder to use.
-(The App Builder is found under Setup)
+## Custom Permission
 
-It will be available to users that see that page.
+[Custom Permissions](https://help.salesforce.com/articleView?id=custom_perms_overview.htm&type=5) are a configurable way to specify whom can access which type of feature.
 
-![Configure in App Builder](docs/images/heroButtonInAppBuilder.jpg)
+We use Custom Permissions with the Hero Carousel to segment what types of Hero Notifications or Tiles that the user can see.
+
+![Screenshot of Custom Permissions](docs/images/securedByCustomPermission.jpg)
+
+For more information on Custom Permissions, please see [Custom Permissions in the Salesforce Help](https://help.salesforce.com/articleView?id=custom_perms_overview.htm&type=5)
+
+### Creating Custom Permissions
+
+For example, say that we have users that need to Administer Hero Images and Tile Launcher Entries.
+
+We can see the list of Custom Permissions by searching for `Custom Permission` within the Setup Quick find.
+
+Here we can create a new Custom Permission that we we can assign to users, and enforce (at different areas) that only users with this Custom Permission can proceed.
+
+(In our case, we simply specify using the Custom Permission API Name on either the Hero Notification record or Tile Launcher Entry record, and it takes care of hiding the tiles)
+
+![Screenshot of Custom Permission](docs/images/customPermissionDetail.png)
+
+### Assigning Custom Permissions
+
+Custom Permissions can be assigned out either:
+
+* [Through Permission Set](https://help.salesforce.com/articleView?id=perm_sets_custom_perms.htm&type=5) or
+* [Through Profile](https://help.salesforce.com/articleView?id=users_profiles_custom_perms.htm&type=5)
+
+Both simply by selecting the Custom Permission from the list, and adding it to the list of enabled Custom Permissions.
+
 
 ---
 
