@@ -67,7 +67,9 @@
     <members>ltng_HeroNotification__c.Priority__c</members>
     <members>ltng_HeroNotification__c.ResourceName__c</members>
     <members>ltng_HeroNotification__c.StartDate__c</members>
+    <members>ltng_HeroNotification__c.Target__c</members>
     <members>ltng_HeroNotification__c.Title__c</members>
+    <members>ltng_HeroNotification__c.Type__c</members>
     <members>ltng_TileLauncherEntryPreference__c.PreferredSortIndex__c</members>
     <members>ltng_TileLauncherEntryPreference__c.TileLauncherEntry__c</members>
     <members>ltng_TileLauncherEntryPreference__c.UniqueId__c</members>

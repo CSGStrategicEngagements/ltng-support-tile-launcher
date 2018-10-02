@@ -438,7 +438,6 @@
 			launcherFormat = launcherFormats[formatIndex];
 
 			try {
-				//-- @TODO: include catches in case the template is bad
 				result = launcherFormat.Navigation_Object_Format__c;
 				pattern = new RegExp(launcherFormat.URL_Format__c, "i");
 

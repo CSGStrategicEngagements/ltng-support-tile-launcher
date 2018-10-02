@@ -3,3 +3,7 @@
     top: 5px;
     right: 5px;
 }
+
+.THIS .tile-launcher-grid .slds-app-launcher__tile-body {
+    min-height: 73px;
+}

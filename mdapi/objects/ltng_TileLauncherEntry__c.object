@@ -187,7 +187,7 @@ https://www.lightningdesignsystem.com/icons</inlineHelpText>
         <fullName>Target__c</fullName>
         <description>Can be URL Schemes, partial urls, etc.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Target address for the quick link.</inlineHelpText>
+        <inlineHelpText>Target address to direct the user to when clicking the tile.</inlineHelpText>
         <label>Target</label>
         <length>255</length>
         <required>false</required>
