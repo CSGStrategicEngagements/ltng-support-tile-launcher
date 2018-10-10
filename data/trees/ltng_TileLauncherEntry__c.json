@@ -90,6 +90,20 @@
             "Name": "Tile Launcher",
             "Target__c": "/lightning/n/ltng_TileLauncher",
             "Type__c": "Navigation Item Page"
+        },
+        {
+            "attributes": {
+                "type": "ltng_TileLauncherEntry__c",
+                "referenceId": "ltng_TileLauncherEntry__cRef8"
+            },
+            "Description__c": "Example link that works only for mobile\r\n(like URL Schemes)",
+            "ExternalId__c": "ex_Mobile",
+            "IconGroup__c": "standard",
+            "IconName__c": "location",
+            "Name": "Mobile Only Link",
+            "Target__c": "https://www.google.com/maps/search/?api=1&query=coffee+shop+near+me",
+            "Type__c": "URL",
+            "SupportedFormFactors__c": "PHONE"
         }
     ]
 }

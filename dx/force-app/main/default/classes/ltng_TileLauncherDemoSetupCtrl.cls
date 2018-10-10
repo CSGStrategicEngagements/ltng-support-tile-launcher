@@ -269,6 +269,17 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
             Type__c = 'Navigation Item Page'
 		));
 		
+		baseRecords.add(new ltng_TileLauncherEntry__c(
+            Description__c = 'Example link that works only for mobile\r\n(like URL Schemes)',
+            ExternalId__c = 'ex_mobile',
+            IconGroup__c = 'standard',
+            IconName__c = 'location',
+            Name = 'Mobile Only Link',
+            Target__c = 'https://www.google.com/maps/search/?api=1&query=coffee+shop+near+me',
+            Type__c = 'URL',
+            SupportedFormFactors__c = 'PHONE'
+		));
+		
 		ltng_HeroNotification__c[] heroRecordsToCreate = new ltng_HeroNotification__c[]{};
 		
 		heroRecordsToCreate.add(new ltng_HeroNotification__c(

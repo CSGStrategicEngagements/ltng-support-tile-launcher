@@ -20,6 +20,7 @@
     <aura:registerEvent name="tileEvent" type="c:ltng_TileLauncherEvent" />
     <!-- events -->
     <!-- elements -->
+    <aura:if isTrue="{!v.tile.isFormFactorSupported}">
     <aura:if isTrue="{!v.matchesSearch}">
     <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
         <a class="slds-app-launcher__tile slds-text-link_reset"
@@ -36,5 +37,6 @@
             </div>
         </a>
     </li>
+    </aura:if>
     </aura:if>
 </aura:component>

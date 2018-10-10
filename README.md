@@ -26,6 +26,12 @@ All in a way that is intuitive for where your users are.
 
 ![Screenshot from Mobile](docs/images/tileLauncherMobile.gif)
 
+Now with the ability to show device and form factor specific tiles.
+
+So you can link to your custom or native [iOS](https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html) or [Android](https://developer.chrome.com/multidevice/android/intents) apps in a single unified way - made even more powerful with the power of [Single Sign On](https://trailhead.salesforce.com/en/modules/identity_login/units/identity_login_sso)
+
+![Screenshot of opening native apps](docs/images/openNativeApps.gif)
+
 ----
 
 NOTE: This project is for demonstration purposes.
@@ -391,9 +397,9 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GXUQA2](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GXUQA2)
+[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GiUQAU](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GiUQAU)
 
-(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A0000038GXUQA2` <br />
+(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A0000038GiUQAU` <br />
 if you are already logged in)
 
 ![Install for Admins](docs/images/installPackage.png)

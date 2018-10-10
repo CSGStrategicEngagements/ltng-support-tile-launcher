@@ -1,2 +1,2 @@
-SELECT Description__c, ExternalId__c, IconGroup__c, IconName__c, Name, Target__c, Type__c
+SELECT Description__c, ExternalId__c, IconGroup__c, IconName__c, Name, Target__c, Type__c, SupportedFormFactors__c
 FROM ltng_TileLauncherEntry__c

@@ -17,6 +17,7 @@
 	 * @param exampleRecordId (Id)
 	 **/
 	loadTiles : function(component, helper) {
+		var formFactor = component.get('v.formFactor');
 		var action = component.get('c.getMyLinks');
 		action.setStorable();
 		//action.setParams({ recordId: recordId });
@@ -26,17 +27,10 @@
 			if( state === 'SUCCESS' ){
 				// console.info('action success');
 				var tiles = response.getReturnValue();
-				tiles.sort(function(a, b) {
-					var t1 = a.PreferredSortIndex__c === b.PreferredSortIndex__c, t2 = a.PreferredSortIndex__c < b.PreferredSortIndex__c;
-					if (t1){
-						return 0;
-					} else if (t2) {
-						return -1;
-					} else {
-						return 1;
-					}
-					//return t1 ? 0: ( t2 ? -1 : 1);
-				});
+
+				tiles = helper.sortTiles(component, helper, tiles);
+				tiles = helper.markSupportedTileFormFactors(component, helper, tiles, formFactor);
+				
 				component.set("v.tiles", tiles);
 
 				helper.loadLauncherFormats(component, helper);
@@ -372,6 +366,54 @@
 	//-----------------------------------
 
 	noop : function(){},
+
+	sortTiles : function(component, helper, tiles){
+		tiles.sort(function(a, b) {
+			var t1 = a.PreferredSortIndex__c === b.PreferredSortIndex__c, t2 = a.PreferredSortIndex__c < b.PreferredSortIndex__c;
+			if (t1){
+				return 0;
+			} else if (t2) {
+				return -1;
+			} else {
+				return 1;
+			}
+			//return t1 ? 0: ( t2 ? -1 : 1);
+		});
+		return tiles;
+	},
+
+	markSupportedTileFormFactors : function(component, helper, tiles){
+		var tile;
+		var currentFormFactor = $A.get('$Browser.formFactor');
+		var isIOS = $A.get('$Browser.isIOS') || $A.get('$Browser.isIPhone');
+		var isAndroid = $A.get('$Browser.isAndroid');
+		var isWindowsPhone = $A.get('$Browser.isWindowsPhone');
+		var formFactorPattern;
+
+		if (isIOS) {
+			currentFormFactor='(IOS|' + currentFormFactor + ')';
+		} else if (isAndroid) {
+			currentFormFactor='(ANDROID|' + currentFormFactor + ')';
+		} else if (isWindowsPhone) {
+			currentFormFactor='(WINDOWS|' + currentFormFactor + ')';
+		}
+
+		formFactorPattern = new RegExp(currentFormFactor,'i');
+
+		if(tiles){
+			for (var i = 0; i < tiles.length; i=i+1) {
+				tile = tiles[i];
+				tile.isFormFactorSupported = true;
+				if (!tile.SupportedFormFactors__c || !formFactorPattern) {
+					//-- allow it
+				} else if (!tile.SupportedFormFactors__c.match(formFactorPattern)){
+					tile.isFormFactorSupported = false;
+				}
+			}
+		}
+
+		return tiles;
+	},
 
 	/**
 	 * Handles the collection of errors into something acceptable for the end user.
