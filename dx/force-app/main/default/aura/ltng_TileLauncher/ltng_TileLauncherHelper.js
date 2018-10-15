@@ -17,7 +17,6 @@
 	 * @param exampleRecordId (Id)
 	 **/
 	loadTiles : function(component, helper) {
-		var formFactor = component.get('v.formFactor');
 		var action = component.get('c.getMyLinks');
 		action.setStorable();
 		//action.setParams({ recordId: recordId });
@@ -29,7 +28,7 @@
 				var tiles = response.getReturnValue();
 
 				tiles = helper.sortTiles(component, helper, tiles);
-				tiles = helper.markSupportedTileFormFactors(component, helper, tiles, formFactor);
+				tiles = helper.markSupportedTileFormFactors(component, helper, tiles);
 				
 				component.set("v.tiles", tiles);
 
@@ -353,8 +352,6 @@
 		
 	  var formFactor = $A.get("$Browser.formFactor");
 	  var usingDesktop = formFactor === "DESKTOP";
- 
-	  //usingDesktop = false;
  
 	  //-- only allow drag and drop if using desktop (for now)
 	  return usingDesktop;
