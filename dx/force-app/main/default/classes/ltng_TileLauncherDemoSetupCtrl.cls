@@ -227,11 +227,11 @@ global with sharing class ltng_TileLauncherDemoSetupCtrl {
 		));
 		
 		baseRecords.add(new ltng_TileLauncherEntry__c(
-            Description__c = 'Link only available to Admins',
+            Description__c = 'Manage the Tile Entries you see here',
             ExternalId__c = 'admin_link',
             IconGroup__c = 'standard',
             IconName__c = 'custom',
-            Name = 'Admin Only Link',
+            Name = 'Tile Launcher Entries',
             Target__c = '/lightning/o/ltng_TileLauncherEntry__c/home',
             Permission__c = 'ltng_TileLauncherAdmin',
             Type__c = 'Object Page'
