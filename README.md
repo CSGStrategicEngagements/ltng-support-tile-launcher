@@ -346,6 +346,107 @@ All except URL use the Lightning:Navigation component to navigate to different a
 
 Although the Type isn't as important yet (it finds the first match based on Priority of the Custom Metadata records), it is important to align as best as possible for the day that it is necessary.
 
+#### Tile Launcher Navigation Format
+
+To simplify its use, and to allow for any number of other formats to be supported (as will happen with quarterly reports), navigation translates the URL provided to lightning events - using [lightning:navigation](https://developer.salesforce.com/docs/component-library/bundle/lightning:navigation/documentation)
+
+These match to the URL provided (in order of 'preferred sort order' - from most specific to most generic) and will navigate based on the first pattern that matches.
+
+The list of all matches are found (and can be extended under the [Tile Launcher Navigation Format - custom metadata](dx/force-app/main/default/objects/ltng_TileLauncherNavigationFormat__mdt/) (also found under Setup -> Custom Metadata)
+
+<table>
+	<tr>
+		<th>Field</th>
+		<th>Description</th>
+		<th>Example</th>
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td>Human readible name for what this pattern matches</td>
+		<td>ex: Object Pattern - specific</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td>The description for others to find</td>
+		<td><a href='https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm#object'>Navigates to a specific record.</a>like /r/{objectApiName}/{actionName}?filterName=Recent</td>
+	</tr>
+	<tr>
+		<td><a href='https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm'>Navigation Type</a></td>
+		<td>Which type of navigation does this represent<br />Not used heavily, but may be required someday.</td>
+		<td>ex: Knowledge Article or Object Page</td>
+	</tr>
+	<tr>
+		<td>Priority</td>
+		<td>Items with higher priority are checked first (e.g. more specific rules should be placed higher)</td>
+		<td>2</td>
+	</tr>
+	<tr>
+		<td>URL Format</td>
+		<td>The regular expression to use to match</td>
+		<td>\/o\/([^?/]+)\/([^?/]+)[?]filterName=([^&]+)</td>
+	</tr>
+	<tr>
+		<td>Navigation Object Format</td>
+		<td>JSON to provide when navigation (based on the pattern)</td>
+		<td>{
+    "type": "standard__objectPage",
+    "attributes": {
+        "objectApiName": "<%=_1%>",
+        "actionName": "<%=_2%>"
+    },
+    "state": {
+        "filterName": "<%=_3%>"
+  }
+}</td>
+	</tr>
+</table>
+
+For example:
+
+<table>
+	<tr><th>Field</th><th>Value</th>
+	<tr>
+		<td>Name</td>
+		<td>Object Pattern 2</td>
+	</tr>
+	<tr>
+		<td><a href='https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm'>Navigation Type</a></td>
+		<td>Object Page</td>
+	</tr>
+	<tr>
+		<td>Priority</td>
+		<td>200</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td><p>Navigates to pages specific to a record:</p>
+<p>for example:
+/o/{objectApiName}/{actionName}?filterName=Recent</p>
+<p>for more information, please see:
+<a href='https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm#object'>More Here</a></p></td>
+	</tr>
+	<tr>
+		<td>URL Format</td>
+		<td>\/o\/([^?/]+)\/([^?/]+)[?]filterName=([^&]+)</td>
+	</tr>
+	<tr>
+		<td>Navigation Object Format</td>
+		<td><br />
+{<br />
+&nbsp;&nbsp;"type": "standard__objectPage",<br />
+&nbsp;&nbsp;"attributes": {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"objectApiName": "<%=_1%>",<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"actionName": "<%=_2%>"<br />
+&nbsp;&nbsp;},<br />
+&nbsp;&nbsp;"state": {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"filterName": "<%=_3%>"<br />
+&nbsp;&nbsp;}<br />
+}<br />
+</td>
+	</tr>
+</table>
+
+**Please note, the replacements use \_1 for regex match 1, \_2 for regex match 2, etc.**
 
 ## Custom Permission
 
@@ -397,9 +498,9 @@ This works very similar to an App Exchange install.
 
 Please login to an available sandbox and click the link below.
 
-[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GiUQAU](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GiUQAU)
+[https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GslQAE](https://test.salesforce.com/packaging/installPackage.apexp?p0=04t6A0000038GslQAE)
 
-(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A0000038GiUQAU` <br />
+(or simply navigate to `https://YOUR_SALESFORCE_INSTANCE/packaging/installPackage.apexp?p0=04t6A0000038GslQAE` <br />
 if you are already logged in)
 
 ![Install for Admins](docs/images/installPackage.png)
