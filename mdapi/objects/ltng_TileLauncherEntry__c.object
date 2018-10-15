@@ -78,7 +78,7 @@
         <searchResultsAdditionalFields>Permission__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Read</sharingModel>
     <visibility>Public</visibility>
     <fields>
         <fullName>Description__c</fullName>
@@ -182,6 +182,57 @@ https://www.lightningdesignsystem.com/icons</inlineHelpText>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SupportedFormFactors__c</fullName>
+        <description>Selected values means this tile supports those Lightning Form Factors
+$A.get(&#39;$Browser.formFactor&#39;)
+For more please see - https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/expr_browser_value_provider.htm</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If any of the Form Factors match then the tile will be shown (OR not AND)
+Blank assumes all form factors.</inlineHelpText>
+        <label>Supported Form Factors</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PHONE</fullName>
+                    <default>false</default>
+                    <label>PHONE</label>
+                </value>
+                <value>
+                    <fullName>DESKTOP</fullName>
+                    <default>false</default>
+                    <label>DESKTOP</label>
+                </value>
+                <value>
+                    <fullName>TABLET</fullName>
+                    <default>false</default>
+                    <label>TABLET</label>
+                </value>
+                <value>
+                    <fullName>IOS</fullName>
+                    <default>false</default>
+                    <label>IOS</label>
+                </value>
+                <value>
+                    <fullName>ANDROID</fullName>
+                    <default>false</default>
+                    <label>ANDROID</label>
+                </value>
+                <value>
+                    <fullName>WINDOWS</fullName>
+                    <default>false</default>
+                    <label>WINDOWS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Target__c</fullName>

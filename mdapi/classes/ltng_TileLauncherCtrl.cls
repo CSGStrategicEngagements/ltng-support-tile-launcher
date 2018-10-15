@@ -3,6 +3,15 @@
  **/
 public with sharing class ltng_TileLauncherCtrl {
 
+	/** Represents any form factor **/
+	public static final String FORM_FACTOR_ALL = '';
+
+	/** Represents an index that is not found **/
+	public static final Integer NOT_FOUND = -1;
+
+	/** Unique ID Delimiter **/
+	public static final String UNIQUE_ID_DELIMITER = '-';
+
 	/**
 	 *  Determines the list of Tiles available to the user.
 	 *  @return (ltng_TileLauncherEntry__c)
@@ -44,12 +53,16 @@ public with sharing class ltng_TileLauncherCtrl {
 		}
 		
 		//-- determine all quicklinks and sort them by the permission required to see them.
-		ltng_TileLauncherEntry__c[] allTiles = [ select id, name, Description__c, ExternalId__c, IconGroup__c, IconName__c, Type__c, Target__c, Permission__c, PreferredSortIndex__c, LastModifiedDate
+		ltng_TileLauncherEntry__c[] allTiles = [ select id, name, Description__c, ExternalId__c, SupportedFormFactors__c,
+				IconGroup__c, IconName__c, Type__c, Target__c, Permission__c, PreferredSortIndex__c, LastModifiedDate
 			from ltng_TileLauncherEntry__c
 			order by PreferredSortIndex__c NULLS LAST, name
 		];
 		
 		for( ltng_TileLauncherEntry__c tile : allTiles ){
+
+			//-- decision was made to not filter at the apex level, but filter at the component
+			//-- this makes the return size larger, but will ensure the sort order is accurate
 
 			//-- update the sort order
 			if( tileSortPreferenceMap.containsKey(tile.Id) ){
@@ -88,7 +101,6 @@ public with sharing class ltng_TileLauncherCtrl {
 	@AuraEnabled
 	public static ltng_TileLauncherEntryPreference__c[] saveTilePreferences(String tilePreferencesJSON) {
 
-		System.debug('tilePreferencesJSON'); System.debug(tilePreferencesJSON);
 		/*
 		There is a known issue on this, where we cannot accept an array of SObjects.
 		https://success.salesforce.com/issues_view?id=a1p3A000000EAbLQAW&title=passing-an-apex-custom-object-parameter-type-from-an-aura-component-to-an-apex-controller-throws-an-error
@@ -112,14 +124,12 @@ public with sharing class ltng_TileLauncherCtrl {
 
 		We do this through the TilePreferenceCollection and TilePreference classes below...
 		*/
+		//System.debug('tilePreferencesJSON'); System.debug(tilePreferencesJSON);
 
 		TilePreferenceCollection tilePreferences = ((TilePreferenceCollection)System.JSON.deserialize(tilePreferencesJSON, TilePreferenceCollection.class));
 
 		Id currentUserId = UserInfo.getUserId();
-		System.debug('userId:' + currentUserId);
-		System.debug('tilePreferences'); System.debug(tilePreferences);
-		System.debug('tilePreferences.length:' + tilePreferences.records.size());
-
+		
 		ltng_TileLauncherEntryPreference__c[] recordsToUpdate = new ltng_TileLauncherEntryPreference__c[]{};
 		ltng_TileLauncherEntryPreference__c newPreference;
 		
@@ -128,7 +138,7 @@ public with sharing class ltng_TileLauncherCtrl {
 				TileLauncherEntry__c = tilePreference.tileLauncherEntryId,
 				PreferredSortIndex__c = Decimal.valueOf(tilePreference.preferredSortIndex),
 				User__c = currentUserId,
-				UniqueId__c = currentUserId + '-' + tilePreference.tileLauncherEntryId
+				UniqueId__c = currentUserId + UNIQUE_ID_DELIMITER + tilePreference.tileLauncherEntryId
 			);
 
 			recordsToUpdate.add(newPreference);
@@ -138,11 +148,11 @@ public with sharing class ltng_TileLauncherCtrl {
 
 		Schema.SObjectField uniqueIdField = ltng_TileLauncherEntryPreference__c.UniqueId__c.getDescribe().getSObjectField();
 		
-		//try {
+		try {
 			Database.upsert(recordsToUpdate, uniqueIdField, true);
-		//} catch(Exception err){
-		//	throw new AuraHandledException('Exception occurred when processing: saveTilePreferences');
-		//}
+		} catch(Exception err){
+			throw new AuraHandledException('Exception occurred when processing: saveTilePreferences -' + err.getMessage());
+		}
 		
 		return(recordsToUpdate);
 	}
@@ -165,8 +175,8 @@ public with sharing class ltng_TileLauncherCtrl {
 	 * Determines the tile launcher formats.
 	 * @return ltng_TileLauncherNavigationFormat__mdt[] - collection of tile launcher navigation formats.
 	 **/
-	 @AuraEnabled
-	 public static ltng_TileLauncherNavigationFormat__mdt[] getLauncherFormats() {
+	@AuraEnabled
+	public static ltng_TileLauncherNavigationFormat__mdt[] getLauncherFormats() {
 		ltng_TileLauncherNavigationFormat__mdt[] results;
 
 		//-- @TODO: review only retrieving formats that match an object format
@@ -182,5 +192,5 @@ public with sharing class ltng_TileLauncherCtrl {
 		}
 
 		return(results);
-	 }
+	}
 }

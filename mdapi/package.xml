@@ -80,6 +80,7 @@
     <members>ltng_TileLauncherEntry__c.IconName__c</members>
     <members>ltng_TileLauncherEntry__c.Permission__c</members>
     <members>ltng_TileLauncherEntry__c.PreferredSortIndex__c</members>
+    <members>ltng_TileLauncherEntry__c.SupportedFormFactors__c</members>
     <members>ltng_TileLauncherEntry__c.Target__c</members>
     <members>ltng_TileLauncherEntry__c.Type__c</members>
     <members>ltng_TileLauncherNavigationFormat__mdt.Description__c</members>
