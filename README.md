@@ -59,6 +59,24 @@ Or from Mobile:
 
 ![Screenshot from Mobile](docs/images/tileLauncherMobile.gif)
 
+### Changing the order
+
+Especially on mobile, what is a click vs a drag can be very important. Otherwise this can mean constantly making changes that weren't intended.
+
+To change the order, enter 'Edit Mode' through the pencil icon in the top right of the launcher.
+
+**(Once you are done changing, leave Edit Mode with the disk icon to save your changes)**
+
+Note: the icons on desktop change, to indicate they can now drag and drop.
+
+![Screenshot of Edit Mode on Desktop](docs/images/editModeDesktop.png)
+
+Editing icons on mobile also change appearance, but instead move to the next position up.
+
+![Screenshot of Edit Mode on Mobile](docs/images/editModeMobile.png)
+
+Once you are done with your changes, leave edit mode - through the save icon, to save your changes.
+
 ### Adding a new Tile:
 
 **1.** As an administrator (or someone with the `Tile Launcher Demo Admin` permission set), Navigate to the list of `Tile Launcher Entries`
