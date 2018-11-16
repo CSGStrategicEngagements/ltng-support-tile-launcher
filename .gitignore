@@ -6,3 +6,5 @@ createTemplateProject.sh
 **/Security.settings*
 /ltng-support-tile-launcher.code-workspace
 /mdapiRefresh
+/dx/testCoverage
+/dx/currentLogs.txt
