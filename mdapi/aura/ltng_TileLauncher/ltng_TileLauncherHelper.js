@@ -171,8 +171,9 @@
 		var navigationParameters = helper.getNavigationParameters(component, helper, linkType, targetURL);
 
 		var navEvt;
-		if (navigationParameters){
-			component.find("navService").navigate(navigationParameters);
+        var isLightningOut = component.get('v.uiTheme') === 'Theme3';
+		if (navigationParameters && !isLightningOut){
+            component.find("navService").navigate(navigationParameters);
 		} else {
 			navEvt = $A.get('e.force:navigateToURL' );
 			navEvt.setParams({ 'url': targetURL });

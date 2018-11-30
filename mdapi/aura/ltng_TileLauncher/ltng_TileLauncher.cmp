@@ -10,6 +10,7 @@
     access="global"
 >
     <!-- attributes -->
+    <aura:attribute name="uiTheme" type="String" access="global" />
     <aura:attribute name="debug" type="Boolean" default="false" access="global" />
     <aura:attribute name="enableCaching" type="Boolean" default="false" access="global" />
     <!-- private attributes -->

@@ -13,6 +13,7 @@
     <members>ltng_TileLauncherDemoSetupItem</members>
     <members>ltng_TileLauncherDraggableTile</members>
     <members>ltng_TileLauncherEvent</members>
+    <members>ltng_TileLauncherOut</members>
     <members>ltng_TileLauncherTile</members>
   </types>
   <types>
@@ -107,6 +108,10 @@
     <members>ltng_TileLauncherNavigationFormat__mdt</members>
   </types>
   <types>
+    <name>ApexPage</name>
+    <members>ltng_TileLauncherOut</members>
+  </types>
+  <types>
     <name>PermissionSet</name>
     <members>TileLauncherDemoAdmin</members>
     <members>TileLauncherDemoParticipant</members>
@@ -126,6 +131,7 @@
     <members>ltng_TileLauncher</members>
     <members>ltng_TileLauncherDemoSetup</members>
     <members>ltng_TileLauncherEntry__c</members>
+    <members>ltng_TileLauncherOut</members>
   </types>
   <version>43.0</version>
 </Package>
