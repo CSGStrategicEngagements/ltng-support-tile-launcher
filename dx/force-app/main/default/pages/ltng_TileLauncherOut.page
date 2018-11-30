@@ -1,0 +1,43 @@
+<!--
+/**
+ * Visualforce page for the Tile Launcher
+ * @page ltng_TileLauncherOut
+ * @author Paul Roth <proth@salesforce.com>
+**/
+-->
+<apex:page sidebar="false" showHeader="false"
+           applyHtmlTag="false" docType="html-5.0"
+>
+<html style="width:100%; height:100%; overflow:scroll; -webkit-overflow-scrolling: touch;">
+    <apex:includeLightning />
+
+    <div id="lightning" />
+
+    <script type="text/javascript">
+    	var userContext = "{!$User.UITheme}";
+        $Lightning.use("c:ltng_TileLauncherOut", function(){
+            $Lightning.createComponent(
+                "c:ltng_TileLauncher",
+                { uiTheme: userContext },
+                "lightning",
+                function(component){
+                    $A.eventService.addHandler({
+                        event: 'force:navigateToURL',
+                        handler: function(event) {
+                            var params=event.getParams();
+                            if (
+                                (typeof sforce !== 'undefined') &&
+                                (typeof sforce.one !== 'undefined')
+                            ) {
+                                sforce.one.navigateToURL(params.url);
+                            } else {
+                                window.location = params.url;
+                            }
+                        }
+                    })
+                }
+            );
+        });
+    </script>
+</html>
+</apex:page>

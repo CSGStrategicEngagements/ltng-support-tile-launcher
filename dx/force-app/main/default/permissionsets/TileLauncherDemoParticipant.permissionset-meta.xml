@@ -123,4 +123,8 @@
         <tab>ltng_TileLauncher</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <tabSettings>
+        <tab>ltng_TileLauncherOut</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>
