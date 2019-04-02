@@ -573,7 +573,7 @@ Thats it. See the [How to Use](#tldr-how) section for how to use the app.
 
 # Licensing
 
-Copyright 2018 Salesforce
+Copyright 2019 Salesforce
 
 (MIT)
 
