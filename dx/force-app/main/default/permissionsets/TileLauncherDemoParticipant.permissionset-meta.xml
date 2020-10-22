@@ -4,6 +4,18 @@
         <application>ltng_TileLauncherDemoApp</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>ltng_HeroButtonCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ltng_TileLauncherCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ltng_staticResourceHelperCtrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <description>Someone that can see the Tile Launcher</description>
     <fieldPermissions>
         <editable>false</editable>
